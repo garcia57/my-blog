@@ -1,8 +1,8 @@
 # -------------------
 # Jekyll Config
 # --------------------
-baseurl: "" #<repo name>
-url: "https://jekyll-origin.netlify.app" #https://garcia57.github.io
+baseurl: "my-blog" #<repo name>
+url: "https://garcia57.github.io" #https://garcia57.github.io
 permalink: pretty
 markdown: kramdown
 highlighter: rouge
