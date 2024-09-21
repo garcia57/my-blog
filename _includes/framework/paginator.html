@@ -13,7 +13,7 @@
         <li><a href="{{ 'blog' | relative_url }}">{{ page }}</a></li>
       {% else %}
          <!--<li><a href="{{ site.baseurl }}{{ site.paginate_path2 | replace: ':num', page }}">{{ page }}</a></li>-->
-         <li><a href="{{ relative_url | append: 'page' }}{{ '/:num' | replace: ':num', page }}">{{ page }}</a></li>
+         <li><a href="{{ 'https://garcia57.github.io/my-blog/blog/page/:num' | replace: ':num', page }}">{{ page }}</a></li>
       {% endif %}
     {% endfor %}
   
