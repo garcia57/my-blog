@@ -24,8 +24,8 @@ There's a lot you can do with these proprietary languages and there a designated
 
 ## Zoho Deluge and REST API
 
-Deluge, Short for "Data Enriched Language for the Universal Grid Environment", comes with a variety of features such as:
-- built-in functions and wrappers that are specifically tailored for Zoho applications. 
+Deluge, short for "Data Enriched Language for the Universal Grid Environment", comes with a variety of features such as:
+- built-in functions and wrappers that are specifically tailored for Zoho applications
 - no reliance on external libraries
 - designed to be easy to read
 - applications built with the language have fully normalized relational data models
