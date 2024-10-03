@@ -20,16 +20,32 @@ Picture this: You're at your desk working on a lead when your boss asks for a re
 
 That's where a CRM's proprietarys scripting language shines. Tools like Salesforce's Apex or Zoho's Deluge are built to steamline CRM tasks by making it easy to create functions, automate workflows, and generate reports—no deep programming skills required. Using a CRM's proprietary programming language is like having a specialized toolkit with high-performance tools crafted for your car model. It guarantees smoother, more powerful rides, maximizing coding efficiency and precision modifications compared to generic tools like Python or C#.
 
+There's a lot you can do with these proprietary languages and there a designated web pages full of documentation that I cannot fully encapuslate in a single blog post. Instead, I want to focus on fulfilling your pretend boss' request using Zoho's scripting language, Deluge, and REST APIs.
 
-With the CRM's scripting language, you can quickly set up a function, integrate it seamlessly, and have the report ready in no time—far more efficient than wrestling with unfamiliar code.
+## Zoho Deluge and REST API
 
-Sure! Zoho Deluge is an online scripting language developed by Zoho1
-. It stands for Data Enriched Language for the Universal Grid Environment2
-. Deluge is designed to integrate and automate workflows across various Zoho applications, making it easier to perform actions and integrations within the Zoho suite3
-.
+Deluge, Short for "Data Enriched Language for the Universal Grid Environment", comes with a variety of features such as:
+- built-in functions and wrappers that are specifically tailored for Zoho applications. 
+- no reliance on external libraries
+- designed to be easy to read
+- applications built with the language have fully normalized relational data models
+- the language is query-integrated
 
-It's user-friendly and minimizes the use of technical jargon and complex code, making it accessible even for those who may not have a deep programming background4
-. You can use Deluge to add logic to your applications incrementally, enhancing their functionality and robustness
+Here are some examples of the language:
+
+```js
+// Fetch the contact record
+contact = zoho.crm.getRecordById("Contacts", contact_id);
+
+// Update the phone number
+contact.get("Phone") = "123-456-7890";
+
+// Save the updated record
+zoho.crm.updateRecord("Contacts", contact_id, contact);
+```
+
+
+
 
 ## Understanding External APIs and Their Use Cases
 
