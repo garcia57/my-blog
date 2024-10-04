@@ -348,238 +348,24 @@ for each  index in timeList
 6. ```count``` is then incremented by 1 per loop iteration.
 
 
+This loop then completes our data transformation in Zoho Deluge for the Hourly Temperature.
+
+## Step 4: Putting it all together
+
+With both the current and hourly tempertures complete, we then compile the two together with our Zoho Deluge Message Card syntax. The result should output a message that looks similar to this (I stylized mine for fun):
+
+(Image here)
 
 
-
-<!--Testing Copy blocks-->
-##
-
-##
-    fdslfdsf
+## Conclusion
 
 
-### Extracting and Transforming pulled Data
+You can see the exact code I used here: [Link](#)
 
+If you want to get even crazier with REST APIs you can configure one to trigger a Message Card to appear in softwares outside of Zoho Cliq as seen in these [documents](https://www.zoho.com/cliq/help/restapi/v2/#Message_Cards_Modern_inline). There's a lot you can do with REST APIs and I hope you take the time to read the mountains of documentation to learn what they do (yes, that's where the most helpful resources are usually found).
 
+### Additional Resources
 
-
-
-
-```js
-$ curl "https://api.open-meteo.com/v1/forecast?latitude=33.5&longitude=-82.02&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,rain,showers,cloud_cover,wind_speed_10m,wind_direction_10m&hourly=temperature_2m&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&forecast_days=1"
-```
-<!--
-https://www.zoho.com/cliq/help/platform/cliq-objects/message-object.html#:~:text=The%20card%20property%20in%20a%20message%20object%20can%20be%20used
--->
-
-<!--
-https://www.zoho.com/cliq/help/restapi/v2/#Message_Cards_Modern_inline
--->
-
-<!--
-https://cliq.zoho.com/messagebuilder#%7B%22text%22%3A%22New%20interns%20will%20be%20joining%20these%20teams%20from%20July.%22%2C%22card%22%3A%7B%22title%22%3A%22ANNOUNCEMENT%22%2C%22thumbnail%22%3A%22https%3A%2F%2Fwww.zoho.com%2Fcliq%2Fhelp%2Frestapi%2Fimages%2Fannounce_icon.png%22%2C%22theme%22%3A%22modern-inline%22%7D%2C%22slides%22%3A%5B%7B%22type%22%3A%22table%22%2C%22title%22%3A%22Details%22%2C%22buttons%22%3A%5B%7B%22label%22%3A%22View%22%2C%22action%22%3A%7B%22type%22%3A%22open.url%22%2C%22data%22%3A%7B%22web%22%3A%22https%3A%2F%2Fimg.zohostatic.com%2Fchat%2Fdefault%2Fofficechat%2Fimages%2Fdefault%2Fsmile.png%22%7D%7D%2C%22type%22%3A%22%2B%22%7D%2C%7B%22label%22%3A%22Cancel%22%2C%22action%22%3A%7B%22type%22%3A%22open.url%22%2C%22data%22%3A%7B%22web%22%3A%22https%3A%2F%2Fimg.zohostatic.com%2Fchat%2Fdefault%2Fofficechat%2Fimages%2Fdefault%2Fsmile.png%22%7D%7D%2C%22type%22%3A%22%2B%22%7D%5D%2C%22data%22%3A%7B%22headers%22%3A%5B%22Name%22%2C%22Team%22%2C%22Reporting%20To%22%5D%2C%22rows%22%3A%5B%7B%22Name%22%3A%22Paula%20Rojas%22%2C%22Team%22%3A%22Zylker-Sales%22%2C%22Reporting%20To%22%3A%22Li%20Jung%22%7D%2C%7B%22Name%22%3A%22Quinn%20Rivers%22%2C%22Team%22%3A%22Zylker-Marketing%22%2C%22Reporting%20To%22%3A%22Patricia%20James%22%7D%5D%7D%7D%5D%7D
--->
-
-
-Code:
-```js
-
-// Here we create 2 Map objects that will be used to transform numberical data from the REST API response into understandable language
-// Wind Degrees Map transforms degrees to cardinal directions
-windDegrees = {"North":0,"NorthNorthEast":22.5,"NorthEast":45,"EastNorthEast":67.5, "East":90,"EastSouthEast":112.5, "SouthEast":135,"SouthSouthEast":157.5,"South":180,"SouthSouthwest":202.5,"Southwest":225, "WestSouthwest":247.5,"West":270, "WestNorthwest":292.5,"Northwest":315, "NorthNorthwest":337.5};
-// CloudCover transforms the "cloud coverage percentage" mathematical process into common words 
-cloudCover = {"Clear Sky":0,"Few Clouds":12.5,"Scattered Clouds":25,"Partly Cloudy":37.5, "Half Cloudy":50,"Mostly Cloudy":62.5,"Broken Overcast":75,"Overcast with Openings":87.5,"Overcast":100};
-//-----------------------------
-//
-// Step 1: Pull the full Data from Metrosfofesj via REST API into the "response" object
- raw_data = Map();
- header_data  = Map();
- response = invokeUrl
- [
- url:  "https://api.open-meteo.com/v1/forecast?latitude=33.5&longitude=-82.02&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,rain,showers,cloud_cover,wind_speed_10m,wind_direction_10m&hourly=temperature_2m&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&forecast_days=1"
- type: GET
- parameters: raw_data.toString()
- headers: header_data
- ];
- //
- // Step 2: We grab the two sections of data that we will be using in our Cliq Command. 
- current_data = response.get("current");
- hourly_temp = response.get("hourly"); 
- //
- // Step 3: Converting Wind Degrees to Cardinal directions. 
- // Here we optain the wind direction value and then find the term the number would refer to using our windDegree Map
- wind_dir = current_data.get("wind_direction_10m").toLong();
- 
- for each entry in windDegrees{
-	 next_value = entry + 22.5;
-	 if(wind_dir > entry &&   wind_dir < next_value || wind_dir == entry){
-		 wind_dir = windDegrees.getKey(entry);
-		 break;
-	 }
- }
-
- // Step 4: Converting Cloud Cover percentage to common wording
- // We follow the same process as in Step 3 but with cloudCover Map
- cloud_cov = current_data.get("cloud_cover").toLong();
- 
-for each  thing in cloudCover {
-	next_value = thing + 12.5;
-	if(cloud_cov > thing && cloud_cov < next_value || cloud_cov == thing) {
-		cloud_cov = cloudCover.getKey(thing);
-		break;
-	}
-}
- 
-// Step 5: Creating the Card Message in Zoho Cliq:
-// Here we use the generated template found on the Zoho Cliq site
-golf_msg = map();
-bot = map();
-bot.put("name","Weather Report");
-golf_msg.put("bot",bot);
-card = map();
-card.put("title","Augusta National Golf Club");
-card.put("thumbnail","https://img.freepik.com/premium-vector/golf-icon-logo-vector-design-template_827767-1928.jpg?w=900");
-card.put("theme","modern-inline");
-golf_msg.put("card",card);
-slidesList = list();
-slidesList0 = map();
-slidesList0.put("type","label");
-slidesList0.put("title","Current Weather");
-buttonsList = list();
-buttonsList0 = map();
-buttonsList0.put("label","Google Maps");
-buttonsList0.put("type","+");
-action = map();
-action.put("type","open.url");
-data = map();
-data.put("web","https://maps.app.goo.gl/BgT7d8oJEToZc1NB6");
-action.put("data",data);
-buttonsList0.put("action",action);
-buttonsList.add(buttonsList0);
-slidesList0.put("buttons",buttonsList);
-// Here we put in the values we optained from the current temp
-dataList = list();
-dataList0 = map();
-dataList0.put("Temperature", current_data.get("temperature_2m")+" °F");
-dataList.add(dataList0);
-dataList1 = map();
-dataList1.put("Apparent Temp",current_data.get("apparent_temperature")+" °F");
-dataList.add(dataList1);
-dataList2 = map();
-dataList2.put("Precipitation",current_data.get("precipitation")+" %");
-dataList.add(dataList2);
-dataList3 = map();
-dataList3.put("Rain",current_data.get("rain")+" %");
-dataList.add(dataList3);
-dataList4 = map();
-dataList4.put("Showers",current_data.get("showers")+" %");
-dataList.add(dataList4);
-dataList5 = map();
-dataList5.put("Cloud Cover",cloud_cov);
-dataList.add(dataList5);
-dataList6 = map();
-dataList6.put("Wind Speed",current_data.get("wind_speed_10m")+" Mph");
-dataList.add(dataList6);
-dataList7 = map();
-dataList7.put("Wind Direction",wind_dir);
-dataList.add(dataList7);
-slidesList0.put("data",dataList);
-slidesList.add(slidesList0);
-// Step 6: Creating the Hourly Table as part of the message
-// Column 1: Here we will create a table that takes in the date-time in iso8601 format and covert it to a 12hr format
-// Column 2: While we are formating the time value, we will also input the temperature value in the same row for colummn 2
-// Below is the general creation of the title and table
-slidesList1 = map();
-slidesList1.put("type","table");
-slidesList1.put("title","Hourly Temperature");
-data = map();
-headersList = list();
-headersList.add("Hour");
-headersList.add("Temp (°F)");
-data.put("headers",headersList);
-rowsList = list();
-timeList = hourly_temp.get("time");
-tempList = hourly_temp.get("temperature_2m");
-// We create a running count to designate what temperature value to grab as we loop through the dateTime MAP
-count = 0;
-// During each loop we grab that index's DateTime value and convert it from string to Date-Time Data type
-// We will then grab the hour of that time and then transform to be used in 12 hour format with its relevant AM/PM
-// After each loop, we append the Hour and Temp into a Map ("aka the next row of the table") and add it to our rowsList. 
-for each index in timeList
-{
-	row_v = Map();
-	row_v.put("Hour", index);
-	dateString = timeList.get(count);
-	dateTime = dateString.toDateTime("yyyy-MM-dd'T'HH:mm");
-
-	testy = hour(dateTime);
-	if (testy > 12){
-		new_val = testy - 12;
-		testy = new_val + " PM";
-	} else if (testy == 0){
-		testy = "12 AM";
-	} else {
-		testy = testy + " AM";
-	}
-	
-	row_v.put("Hour",testy);
-    row_v.put("Temp (°F)", tempList.get(count) + " °F");
-    rowsList.add(row_v);
-	count = count + 1;
-}
-// After we grab all of our rows into our "rowsList" we then add them to our slidesList1 object, which is the second part of our Cliq command.
-data.put("rows",rowsList);
-slidesList1.put("data",data);
-slidesList.add(slidesList1);
-golf_msg.put("slides",slidesList);
-golf_msg.put("text","This is the current and hourly weather at the golf course");
-return golf_msg;
-
-```
-
-
-
-
-
-
-
-
-
-### invoke 
-
-
-
-
-<!--
-lati: 33.5000 
-long: -82.0200
--->
-
-<!--
-https://open-meteo.com/
--->
-
-<!--
-$ curl "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current=temperature_2m,wind_speed_10m&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m"
--->
-
-
-
-
-
-## Setting Up Zoho Deluge for API Integration
-
-## How to Integrate External APIs with Zoho Deluge
-
-## Storing and Managing API Data in Zoho
-
-## Implementing a Real-World Use Case: A Step-by-Step Example
-
-## Tips for Optimizing API Integration in Zoho Deluge
-
-
-
-## Conclusion and Additional Resources
 
 [Zoho Deluge - InvokeURL()](https://www.zoho.com/deluge/help/webhook/invokeurl-api-task.html)
 
@@ -589,9 +375,11 @@ $ curl "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&cu
 
 [Zoho Cliq - Message Builder](https://cliq.zoho.com/messagebuilder#%7B%22text%22%3A%22Your%20message%20on%20the%20card%20goes%20here!%22%7D)
 
+[Zoho Cliq - Message Builder Template 2](https://cliq.zoho.com/messagebuilder#%7B%22text%22%3A%22New%20interns%20will%20be%20joining%20these%20teams%20from%20July.%22%2C%22card%22%3A%7B%22title%22%3A%22ANNOUNCEMENT%22%2C%22thumbnail%22%3A%22https%3A%2F%2Fwww.zoho.com%2Fcliq%2Fhelp%2Frestapi%2Fimages%2Fannounce_icon.png%22%2C%22theme%22%3A%22modern-inline%22%7D%2C%22slides%22%3A%5B%7B%22type%22%3A%22table%22%2C%22title%22%3A%22Details%22%2C%22buttons%22%3A%5B%7B%22label%22%3A%22View%22%2C%22action%22%3A%7B%22type%22%3A%22open.url%22%2C%22data%22%3A%7B%22web%22%3A%22https%3A%2F%2Fimg.zohostatic.com%2Fchat%2Fdefault%2Fofficechat%2Fimages%2Fdefault%2Fsmile.png%22%7D%7D%2C%22type%22%3A%22%2B%22%7D%2C%7B%22label%22%3A%22Cancel%22%2C%22action%22%3A%7B%22type%22%3A%22open.url%22%2C%22data%22%3A%7B%22web%22%3A%22https%3A%2F%2Fimg.zohostatic.com%2Fchat%2Fdefault%2Fofficechat%2Fimages%2Fdefault%2Fsmile.png%22%7D%7D%2C%22type%22%3A%22%2B%22%7D%5D%2C%22data%22%3A%7B%22headers%22%3A%5B%22Name%22%2C%22Team%22%2C%22Reporting%20To%22%5D%2C%22rows%22%3A%5B%7B%22Name%22%3A%22Paula%20Rojas%22%2C%22Team%22%3A%22Zylker-Sales%22%2C%22Reporting%20To%22%3A%22Li%20Jung%22%7D%2C%7B%22Name%22%3A%22Quinn%20Rivers%22%2C%22Team%22%3A%22Zylker-Marketing%22%2C%22Reporting%20To%22%3A%22Patricia%20James%22%7D%5D%7D%7D%5D%7D)
+
+
+
 ##
-
-
 
 John Gruber created the [Markdown](#) language in 2004 in collaboration with Aaron Swartz on the syntax, with the goal of enabling people "to write using an easy-to-read and easy-to-write plain text format". Its key design goal is readability. That the language be readable as-is.
 

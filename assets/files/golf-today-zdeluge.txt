@@ -1,0 +1,155 @@
+
+// Here we create 2 Map objects that will be used to transform numberical data from the REST API response into understandable language
+// Wind Degrees Map transforms degrees to cardinal directions
+windDegrees = {"North":0,"North Northeast":22.5,"Northeast":45,"East Northeast":67.5,"East":90,"East Southeast":112.5,"Southeast":135,"South Southeast":157.5,"South":180,"South Southwest":202.5,"Southwest":225,"West Southwest":247.5,"West":270,"West Northwest":292.5,"Northwest":315,"North Northwest":337.5};
+// CloudCover transforms the "cloud coverage percentage" mathematical process into common words 
+cloudCover = {"Clear Sky":0,"Few Clouds":12.5,"Scattered Clouds":25,"Partly Cloudy":37.5,"Half Cloudy":50,"Mostly Cloudy":62.5,"Broken Overcast":75,"Overcast with Openings":87.5,"Overcast":100};
+//-----------------------------
+//
+// Step 1: Pull the full Data from Metrosfofesj via REST API into the "response" object
+raw_data = Map();
+header_data = Map();
+response = invokeurl
+[
+	url :"https://api.open-meteo.com/v1/forecast?latitude=33.5&longitude=-82.02&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,rain,showers,cloud_cover,wind_speed_10m,wind_direction_10m&hourly=temperature_2m&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&forecast_days=1"
+	type :GET
+	parameters:raw_data.toString()
+	headers:header_data
+];
+//
+// Step 2: We grab the two sections of data that we will be using in our Cliq Command. 
+current_data = response.get("current");
+hourly_temp = response.get("hourly");
+//
+// Step 3: Converting Wind Degrees to Cardinal directions. 
+// Here we optain the wind direction value and then find the term the number would refer to using our windDegree Map
+wind_dir = current_data.get("wind_direction_10m").toLong();
+for each  entry in windDegrees
+{
+	next_value = entry + 22.5;
+	if(wind_dir > entry && wind_dir < next_value || wind_dir == entry)
+	{
+		wind_dir = windDegrees.getKey(entry);
+		break;
+	}
+}
+// Step 4: Converting Cloud Cover percentage to common wording
+// We follow the same process as in Step 3 but with cloudCover Map
+cloud_cov = current_data.get("cloud_cover").toLong();
+
+for each  thing in cloudCover
+{
+	next_value = thing + 12.5;
+	if(cloud_cov > thing && cloud_cov < next_value || cloud_cov == thing)
+	{
+		cloud_cov = cloudCover.getKey(thing);
+		break;
+	}
+}
+// Step 5: Creating the Card Message in Zoho Cliq:
+// Here we use the generated template found on the Zoho Cliq site
+golf_msg = Map();
+bot = Map();
+bot.put("name","Weather Report");
+golf_msg.put("bot",bot);
+card = Map();
+card.put("title","Augusta National Golf Club");
+card.put("thumbnail","https://img.freepik.com/premium-vector/golf-icon-logo-vector-design-template_827767-1928.jpg?w=900");
+card.put("theme","modern-inline");
+golf_msg.put("card",card);
+slidesList = list();
+slidesList0 = Map();
+slidesList0.put("type","label");
+slidesList0.put("title","Current Weather");
+buttonsList = list();
+buttonsList0 = Map();
+buttonsList0.put("label","Google Maps");
+buttonsList0.put("type","+");
+action = Map();
+action.put("type","open.url");
+data = Map();
+data.put("web","https://maps.app.goo.gl/BgT7d8oJEToZc1NB6");
+action.put("data",data);
+buttonsList0.put("action",action);
+buttonsList.add(buttonsList0);
+slidesList0.put("buttons",buttonsList);
+// Here we put in the values we optained from the current temp
+dataList = list();
+dataList0 = Map();
+dataList0.put("Temperature",current_data.get("temperature_2m") + " °F");
+dataList.add(dataList0);
+dataList1 = Map();
+dataList1.put("Apparent Temp",current_data.get("apparent_temperature") + " °F");
+dataList.add(dataList1);
+dataList2 = Map();
+dataList2.put("Precipitation",current_data.get("precipitation") + " %");
+dataList.add(dataList2);
+dataList3 = Map();
+dataList3.put("Rain",current_data.get("rain") + " %");
+dataList.add(dataList3);
+dataList4 = Map();
+dataList4.put("Showers",current_data.get("showers") + " %");
+dataList.add(dataList4);
+dataList5 = Map();
+dataList5.put("Cloud Cover",cloud_cov);
+dataList.add(dataList5);
+dataList6 = Map();
+dataList6.put("Wind Speed",current_data.get("wind_speed_10m") + " Mph");
+dataList.add(dataList6);
+dataList7 = Map();
+dataList7.put("Wind Direction",wind_dir);
+dataList.add(dataList7);
+slidesList0.put("data",dataList);
+slidesList.add(slidesList0);
+// Step 6: Creating the Hourly Table as part of the message
+// Column 1: Here we will create a table that takes in the date-time in iso8601 format and covert it to a 12hr format
+// Column 2: While we are formating the time value, we will also input the temperature value in the same row for colummn 2
+// Below is the general creation of the title and table
+slidesList1 = Map();
+slidesList1.put("type","table");
+slidesList1.put("title","Hourly Temperature");
+data = Map();
+headersList = list();
+headersList.add("Hour");
+headersList.add("Temp (°F)");
+data.put("headers",headersList);
+rowsList = list();
+timeList = hourly_temp.get("time");
+tempList = hourly_temp.get("temperature_2m");
+// We create a running count to designate what temperature value to grab as we loop through the dateTime MAP
+count = 0;
+// During each loop we grab that index's DateTime value and convert it from string to Date-Time Data type
+// We will then grab the hour of that time and then transform to be used in 12 hour format with its relevant AM/PM
+// After each loop, we append the Hour and Temp into a Map ("aka the next row of the table") and add it to our rowsList. 
+for each  index in timeList
+{
+	row_v = Map();
+	row_v.put("Hour",index);
+	dateString = timeList.get(count);
+	dateTime = dateString.toDateTime("yyyy-MM-dd'T'HH:mm");
+	date_hour = hour(dateTime);
+	if(date_hour > 12)
+	{
+		new_val = date_hour - 12;
+		date_hour = new_val + " PM";
+	}
+	else if(date_hour == 0)
+	{
+		date_hour = "12 AM";
+	}
+	else
+	{
+		date_hour = date_hour + " AM";
+	}
+	row_v.put("Hour",date_hour);
+	row_v.put("Temp (°F)",tempList.get(count) + " °F");
+	rowsList.add(row_v);
+	count = count + 1;
+}
+// After we grab all of our rows into our "rowsList" we then add them to our slidesList1 object, which is the second part of our Cliq command.
+data.put("rows",rowsList);
+slidesList1.put("data",data);
+slidesList.add(slidesList1);
+golf_msg.put("slides",slidesList);
+golf_msg.put("text","This is the current and hourly weather at the golf course");
+return golf_msg;
