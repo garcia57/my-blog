@@ -360,9 +360,11 @@ With both the current and hourly tempertures complete, we then compile the two t
 ## Conclusion
 
 
-You can see the exact code I used here: [Link](https://garcia57.github.io/my-blog/assets/files/golf-today-zdeluge.txt). If you want to get even crazier with REST APIs you can configure one to trigger a Message Card to appear in softwares outside of Zoho Cliq as seen in these [documents](https://www.zoho.com/cliq/help/restapi/v2/#Message_Cards_Modern_inline). There's a lot you can do with REST APIs and I hope you take the time to read the mountains of documentation to learn what they do (yes, that's where the most helpful resources are usually found).
+You can see the exact code I used here: [Link](https://garcia57.github.io/my-blog/assets/files/golf-today-zdeluge.txt). If you want to get even crazier with REST APIs you can configure one to trigger a Message Card to appear in softwares outside of Zoho Cliq as seen in these [documents](https://www.zoho.com/cliq/help/restapi/v2/#Message_Cards_Modern_inline). There's a lot you can do with REST APIs and I hope you take the time to read the mountains of documentation to learn what they do.
 
-I really hope this blog post helped you learn about proprietary scripting languages, REST APIs, and how to work with APIs in Zoho Deluge. There was a lot we didn't discuss so I hope you take time to research more about this side of programming. Take care!
+>  Mastering REST APIs is crucial in thriving in a tech-driven world.
+
+I really hope this blog post helped you learn about proprietary scripting languages, REST APIs, and how to work with APIs in Zoho Deluge. There was a lot we didn't discuss so I hope you take time to research more about this side of programming. 
 
 ### Additional Resources
 
@@ -376,55 +378,3 @@ I really hope this blog post helped you learn about proprietary scripting langua
 
 [Zoho Cliq - Message Builder Template 2](https://cliq.zoho.com/messagebuilder#%7B%22text%22%3A%22New%20interns%20will%20be%20joining%20these%20teams%20from%20July.%22%2C%22card%22%3A%7B%22title%22%3A%22ANNOUNCEMENT%22%2C%22thumbnail%22%3A%22https%3A%2F%2Fwww.zoho.com%2Fcliq%2Fhelp%2Frestapi%2Fimages%2Fannounce_icon.png%22%2C%22theme%22%3A%22modern-inline%22%7D%2C%22slides%22%3A%5B%7B%22type%22%3A%22table%22%2C%22title%22%3A%22Details%22%2C%22buttons%22%3A%5B%7B%22label%22%3A%22View%22%2C%22action%22%3A%7B%22type%22%3A%22open.url%22%2C%22data%22%3A%7B%22web%22%3A%22https%3A%2F%2Fimg.zohostatic.com%2Fchat%2Fdefault%2Fofficechat%2Fimages%2Fdefault%2Fsmile.png%22%7D%7D%2C%22type%22%3A%22%2B%22%7D%2C%7B%22label%22%3A%22Cancel%22%2C%22action%22%3A%7B%22type%22%3A%22open.url%22%2C%22data%22%3A%7B%22web%22%3A%22https%3A%2F%2Fimg.zohostatic.com%2Fchat%2Fdefault%2Fofficechat%2Fimages%2Fdefault%2Fsmile.png%22%7D%7D%2C%22type%22%3A%22%2B%22%7D%5D%2C%22data%22%3A%7B%22headers%22%3A%5B%22Name%22%2C%22Team%22%2C%22Reporting%20To%22%5D%2C%22rows%22%3A%5B%7B%22Name%22%3A%22Paula%20Rojas%22%2C%22Team%22%3A%22Zylker-Sales%22%2C%22Reporting%20To%22%3A%22Li%20Jung%22%7D%2C%7B%22Name%22%3A%22Quinn%20Rivers%22%2C%22Team%22%3A%22Zylker-Marketing%22%2C%22Reporting%20To%22%3A%22Patricia%20James%22%7D%5D%7D%7D%5D%7D)
 
-
-
-##
-
-John Gruber created the [Markdown](#) language in 2004 in collaboration with Aaron Swartz on the syntax, with the goal of enabling people "to write using an easy-to-read and easy-to-write plain text format". Its key design goal is readability. That the language be readable as-is.
-
-> "Markdown is a lightweight markup language with plain-text-formatting syntax"
-
-To this end, its main inspiration is the existing conventions for marking up plain text in email, though it also draws from earlier markup languages, notably setext, Textile, and reStructuredText.
-
-## Markdown Flavours
-
-From 2012, a group of people including Jeff Atwood and John MacFarlane launched what Atwood characterized as a standardization effort. A community website now aims to "document various tools and resources available to document authors and developers, as well as implementors of the various markdown implementations".
-
-[image]({{ site.baseurl }}/assets/images/gen/content/content-4.webp){:class="custom-image-class"}
-{% include framework/shortcodes/image.html src="/assets/images/gen/content/content-3.webp" %}
-
-### GitHub Flavored Markdown (GFM)
-
-In 2017, GitHub released a formal specification of their GitHub Flavored Markdown (GFM) that is based on CommonMark. It follows the CommonMark specification exactly except for tables, strikethrough, autolinks and task lists, which the GitHub spec has added as extensions. GitHub also changed the parser used on their sites accordingly, which required that some documents be changed. For instance, GFM now requires that the hash symbol that creates a heading be separated from the heading text by a space character.he user to create their own.
-
-{% include framework/shortcodes/figure.html src="/assets/images/gen/content/content-2.webp" title="There are many popular text editors for Markdown" caption="VSCode Editor" alt="Photo of designing a website in Figma" link="https://figma.com" target="_blank" %}
-
-### Markdown Extra
-
-Markdown Extra is a lightweight markup language based on Markdown implemented in PHP (originally), [Python](#) and [Ruby](#). It adds features not available with plain Markdown syntax. Markdown Extra is supported in some content management systems such as, for example, Drupal.
-
-### MDX
-
-At the same time, a number of ambiguities in the informal specification had attracted attention.These issues spurred the creation of tools such as Babelmark to compare the output of various implementations, and an effort by some developers of Markdown parsers for standardisation. However, Gruber has argued that complete standardization would be a mistake:
-
-```js
-$(window).scroll(function () {
-  // this will work when your window scrolled.
-  var scroll = $(window).scrollTop();
-  if (scroll > 100) {
-    $(".header").addClass("header-scrolled");
-  } else {
-    $(".header").removeClass("header-scrolled");
-  }
-});
-```
-
-Gruber avoided using curly braces in Markdown to unofficially reserve them for implementation-specific extensions. Markdown Extra adds the following features to Markdown:
-
-- markdown markup inside HTML blocks
-- elements with id/class attribute
-- fenced code blocks that span multiple lines of code
-- tables
-- definition lists
-- footnotes
-- abbreviations
