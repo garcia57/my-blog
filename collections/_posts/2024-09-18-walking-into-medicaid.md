@@ -360,12 +360,11 @@ With both the current and hourly tempertures complete, we then compile the two t
 ## Conclusion
 
 
-You can see the exact code I used here: [Link](#)
+You can see the exact code I used here: [Link](https://garcia57.github.io/my-blog/assets/files/golf-today-zdeluge.txt). If you want to get even crazier with REST APIs you can configure one to trigger a Message Card to appear in softwares outside of Zoho Cliq as seen in these [documents](https://www.zoho.com/cliq/help/restapi/v2/#Message_Cards_Modern_inline). There's a lot you can do with REST APIs and I hope you take the time to read the mountains of documentation to learn what they do (yes, that's where the most helpful resources are usually found).
 
-If you want to get even crazier with REST APIs you can configure one to trigger a Message Card to appear in softwares outside of Zoho Cliq as seen in these [documents](https://www.zoho.com/cliq/help/restapi/v2/#Message_Cards_Modern_inline). There's a lot you can do with REST APIs and I hope you take the time to read the mountains of documentation to learn what they do (yes, that's where the most helpful resources are usually found).
+I really hope this blog post helped you learn about proprietary scripting languages, REST APIs, and how to work with APIs in Zoho Deluge. There was a lot we didn't discuss so I hope you take time to research more about this side of programming. Take care!
 
 ### Additional Resources
-
 
 [Zoho Deluge - InvokeURL()](https://www.zoho.com/deluge/help/webhook/invokeurl-api-task.html)
 
@@ -391,7 +390,7 @@ To this end, its main inspiration is the existing conventions for marking up pla
 
 From 2012, a group of people including Jeff Atwood and John MacFarlane launched what Atwood characterized as a standardization effort. A community website now aims to "document various tools and resources available to document authors and developers, as well as implementors of the various markdown implementations".
 
-![image]({{ site.baseurl }}/assets/images/gen/content/content-4.webp){:class="custom-image-class"}
+[image]({{ site.baseurl }}/assets/images/gen/content/content-4.webp){:class="custom-image-class"}
 {% include framework/shortcodes/image.html src="/assets/images/gen/content/content-3.webp" %}
 
 ### GitHub Flavored Markdown (GFM)
