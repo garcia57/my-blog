@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "API Magic with Zoho Deluge: A Hands-On Guide for Data Science Enthusiasts"
+title: "API Magic with Zoho Deluge: An In-Depth Guide with a real world example"
 date: 2024-09-18T09:49:03Z
 authors: ["Andy Garcia"]
 categories: ["Zoho Deluge", "REST API"]
@@ -9,7 +9,7 @@ thumbnail: "/assets/images/gen/blog/blog-21-thumbnail.webp"
 image: "/assets/images/gen/blog/blog-21.webp"
 comments: false
 
-meta_title: "API Magic with Zoho Deluge: A Hands-On Guide for Data Science Enthusiasts"
+meta_title: "API Magic with Zoho Deluge: An In-Depth Guide with a real world example"
 meta_description: This blog post will walk you through using external APIs within Zoho Deluge. You'll learn what Zoho Deluge is, how to leverage external APIs effectively, and see a real-world data science example in action. Additionally, the guide will cover best practices for storing and managing the data obtained from these APIs.
 meta_image: "/assets/images/og/og-twitter-blog-image.webp"
 ---
@@ -240,17 +240,112 @@ Let's say Open Metro required a ```date_range``` from a ```start_date``` and ```
 
 You would repeat this process for any other parameters desired.
 
-### Step 2: Wind Direction
+## Step 2: Wind Direction
 
-You may have noticed Open Metro's wind direction returns a numberical value (ex: 293) instead of wording like "North West". That is due to using Azimuths to represent cardinal directions. Well, knowing the wind is coming from angle 293 isn't super helpful when your trying to hit an eagle on the par-5 18th hole. So we need a dictionary of cardinal directions and the minimum angles that would be understood to reference them. In my cod I use the following:
+You may have noticed Open Metro's wind direction returns a numberical value (ex: 293) instead of wording like "North West". That is due to using Azimuths to represent cardinal directions. Well, knowing the wind is coming from angle 293 isn't super helpful when your trying to hit an eagle on the par-5 18th hole. So we need a dictionary of cardinal directions and the minimum angles that would be understood to reference them. In my code I use the following:
 
 ```js
-windDegrees = {"North":0,"NorthNorthEast":22.5,"NorthEast":45,"EastNorthEast":67.5,"East":90,"EastSouthEast":112.5,"SouthEast":135,"SouthSouthEast":157.5,"South":180,"SouthSouthwest":202.5,"Southwest":225,"WestSouthwest":247.5,"West":270,"WestNorthwest":292.5,"Northwest":315,"NorthNorthwest":337.5};
+windDegrees = {"North":0,"North Northeast":22.5,"Northeast":45,"East Northeast":67.5,"East":90,"East Southeast":112.5,"Southeast":135,"South Southeast":157.5,"South":180,"South Southwest":202.5,"Southwest":225,"West Southwest":247.5,"West":270,"West Northwest":292.5,"Northwest":315,"North Northwest":337.5};
+```
+
+When given an angle like 5° or 15°, it’s considered close enough to the North direction (0°) to be labeled as "North." However, when the angle reaches 21.5°, it still falls under the "North" category because it hasn't yet crossed the threshold of 22.5°, which marks the beginning of the "North Northeast" direction. Therefore, 21.5° is categorized as "North," not "North Northeast," which starts at 22.5°.
+
+We will use a loop function to find the corresponding cardinal or intercardinal wind direction based on a given angle (degree) of wind direction. Here's my loop:
+
+```js
+//wind_dir grabs the wind_direction degree from the current_data object and converts it to a number
+wind_dir = current_data.get("wind_direction_10m").toLong();
+for each  entry in windDegrees
+{
+	next_value = entry + 22.5;
+	if(wind_dir > entry && wind_dir < next_value || wind_dir == entry)
+	{
+		wind_dir = windDegrees.getKey(entry);
+		break;
+	}
+}
 ```
 
 
+<strong>Loop explained</strong>:
+
+1. The loop goes through each entry in the windDegrees dictionary, which maps wind directions to their respective degree values.
+2. For each entry, it calculates the next value (```entry``` + 22.5), establishing a range for that wind direction. For example, "North" corresponds to 0°, so its range would be 0° to 22.5°.
+3. The loop checks if the given wind direction (```wind_dir```) falls within the current range or exactly matches the entry degree. For example, if ```wind_dir``` is 21.5°, it's within the range of 0° to 22.5° and hence is categorized as "North."
+4. When it finds the matching range, it updates ```wind_dir``` with the corresponding key (wind direction name) from the dictionary and breaks the loop.
 
 
+The same process is done for Cloud Cover using this dictionary and each ```next_value``` being the ```entry``` + 12.5
+
+```js
+cloudCover = {"Clear Sky":0,"Few Clouds":12.5,"Scattered Clouds":25,"Partly Cloudy":37.5,"Half Cloudy":50,"Mostly Cloudy":62.5,"Broken Overcast":75,"Overcast with Openings":87.5,"Overcast":100};
+```
+
+Every other ```current_data``` key value can simply be referenced with a ```.get(__)``` statement. Below is a snippet of that from my code. As you can see, I am getting the specific string value from the designated key with an attached symbol for styling. 
+```js
+  dataList1 = Map();
+  dataList1.put("Apparent Temp",current_data.get("apparent_temperature") + " °F");
+  dataList.add(dataList1);
+  //
+  dataList4 = Map();
+  dataList4.put("Showers",current_data.get("showers") + " %");
+  dataList.add(dataList4);
+  //code
+  dataList6 = Map();
+  dataList6.put("Wind Speed",current_data.get("wind_speed_10m") + " Mph");
+  dataList.add(dataList6);
+  //more code
+
+```
+
+## Step 3: Hourly Temperature
+
+We have now completed the current weather section but we are still left with the hourly weather portion of the project. From looking at the 2 nested lists in ```hourly_temp``` object, we will need a slightly more complex loop. 
+
+The idea is to loop through the ```hourly_temp``` object, which contains two nested lists: one for <strong>time</strong> and one for <strong>temperature</strong>. For each time entry, we’ll convert it to a legible 12-hour format (e.g., 5 PM) and pair it with its corresponding temperature value (that we will grab using a ```count``` value as an index number). After each iteration, the ```count``` value will also be incremented by one to keep pace with the for loop. This data will then be added to ```rowsList``` list that represents rows of a table to be added in following snippets of code.
+
+If you can, take a crack at building this loop on your own. If you don't have Cliq, you can work on your own "Hourly_temp" objected with the 2 nested list objects in the language you are most comforatble with. 
+
+Here is my code:
+```js
+
+count = 0;
+for each  index in timeList
+{
+	row_v = Map();
+	row_v.put("Hour",index);
+	dateString = timeList.get(count);
+	dateTime = dateString.toDateTime("yyyy-MM-dd'T'HH:mm");
+	date_hour = hour(dateTime);
+	if(date_hour > 12)
+	{
+		new_val = date_hour - 12;
+		date_hour = new_val + " PM";
+	}
+	else if(date_hour == 0)
+	{
+		date_hour = "12 AM";
+	}
+	else
+	{
+		date_hour = date_hour + " AM";
+	}
+	row_v.put("Hour",date_hour);
+	row_v.put("Temp (°F)",tempList.get(count) + " °F");
+	rowsList.add(row_v);
+	count = count + 1;
+}
+
+```
+
+<strong>Loop Explained</strong>:
+
+1. ```count``` variable keeps track of the current index in the ```timeList``` to be used in getting specific key-values in ```tempList```.
+2. The loop iterates through each entry in timeList.
+3. For each iteration, my code retreives the corresponding dateString and converts it to a DateTime object.
+4. This section extracts the hour from the DateTime object and formats it into a 12-hour AM/PM format. You'll notice that an additional if statement was created since ```date_hour``` = 0 is actually 12 AM. Hours greater than 12 reformatted and have the PM ending. All other hours are left alone with the AM ending.
+5. I then grab the corresponding temperature value using ```count``` as an index number and add it to a map (```row_v```), which is then added to rowsList.
+6. ```count``` is then incremented by 1 per loop iteration.
 
 
 
@@ -258,7 +353,6 @@ windDegrees = {"North":0,"NorthNorthEast":22.5,"NorthEast":45,"EastNorthEast":67
 
 <!--Testing Copy blocks-->
 ##
-<tab><tab>code/text here
 
 ##
     fdslfdsf
