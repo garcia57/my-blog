@@ -6,7 +6,7 @@ authors: ["Andy Garcia"]
 categories: ["Zoho Deluge", "REST API"]
 description: This blog post will walk you through using external APIs within Zoho Deluge. You'll learn what Zoho Deluge is, how to leverage external APIs effectively, and see a real-world data science example in action. Additionally, the guide will cover best practices for storing and managing the data obtained from these APIs.
 thumbnail: "/assets/images/gen/blog/blog-21-thumbnail.webp"
-image: "/assets/images/gen/blog/blog-21.webp"
+image: "/assets/images/gen/blog/blog-22.webp"
 comments: false
 
 meta_title: "API Magic with Zoho Deluge: An In-Depth Guide with a real world example"
@@ -185,7 +185,7 @@ Here, both ```time``` and ```temperature_2m``` are seperate lists. Why? Well, ea
 
 There are plenty of documentation detailing how to access the "Command" build-out tool from the "Bots & Tools" link in Zoho Cliq. Therefore I will not give you an in-depth explanation on setting this up. Just know that you will set up the command name as "/golftoday", the access settings as "personal", and select a chat window that no one in your company uses like a bot window. The outputs of your code will only be seen by you and they are removable within the chat window. You can also stylize the In-line message using Zoho Cliq's Message Builder by following the link [here](). I used Modern In-line and added a List (to display current weather data) and then a Table (to display today's hourly temperature) to my message. When your done styling your message copy the Deluge script and paste it in your open Zoho Cliq Command Editor window.
 
-[Image HEREEEE]
+[Should I put an image here?]
 
 ## Step 1: invokeURL
 
@@ -354,7 +354,7 @@ This loop then completes our data transformation in Zoho Deluge for the Hourly T
 
 With both the current and hourly tempertures complete, we then compile the two together with our Zoho Deluge Message Card syntax. The result should output a message that looks similar to this (I stylized mine for fun):
 
-(Image here)
+{% include framework/shortcodes/figure.html src="/assets/files/Zoho-Message-Card-Image.webp" title="The message card is scrollable, showing you the hourly temps as well" caption="Andy Garcia" alt="Photo of Zoho Cliq Command Style" link="https://figma.com" target="_blank" %}
 
 
 ## Conclusion
