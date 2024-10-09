@@ -9,29 +9,29 @@ thumbnail: "/assets/images/gen/blog/blog-21-thumbnail.webp"
 image: "/assets/images/gen/blog/blog-22.webp"
 comments: false
 
-meta_title: "API Magic with Zoho Deluge: An In-Depth Guide with a real world example"
-meta_description: This blog post will walk you through using external APIs within Zoho Deluge. You'll learn what Zoho Deluge is, how to leverage external APIs effectively, and see a real-world data science example in action. Additionally, the guide will cover best practices for storing and managing the data obtained from these APIs.
-meta_image: "/assets/images/og/og-twitter-blog-image.webp"
+#meta_title: "API Magic with Zoho Deluge: An In-Depth Guide with a real world example"
+#meta_description: This blog post will walk you through using external APIs within Zoho Deluge. You'll learn what Zoho Deluge is, how to leverage external APIs effectively, and see a real-world data science example in action. Additionally, the guide will cover best practices for storing and managing the data obtained from these APIs.
+#meta_image: "/assets/images/og/og-twitter-blog-image.webp"
 ---
 
 ## Introduction to Zoho Deluge and Its Relevance for Data Science
 
-Picture this: You're at your desk working on a lead when your boss asks you to create a daily weather report on his favorite golf course. You consider using Python or C#, but it could take days—and you're not confident in those languages.
+Picture this: You're at your desk a lead's contact details when your boss asks you to create a daily weather report on his favorite golf course. You consider using Python or C#, but it could take days—and you're not confident in those languages.
 
-That's where a CRM's proprietarys scripting language shines. Tools like Salesforce's Apex or Zoho's Deluge are built to steamline CRM tasks by making it easy to create functions, automate workflows, and generate reports—no deep programming skills required. Using a CRM's proprietary programming language is like having a specialized toolkit with high-performance tools crafted for your car model. It guarantees smoother, more powerful rides, maximizing coding efficiency and precision modifications compared to generic tools like Python or C#.
+That's where a CRM's proprietary scripting language shines. Tools like Salesforce's Apex or Zoho's Deluge are designed to streamline CRM tasks, making it easy to create functions, automate workflows, and generate reports—no deep programming skills needed. Using a CRM's proprietary language is like having a specialized toolkit with high-performance tools crafted specifically for your car model. It ensures smoother, more powerful performance, maximizing coding efficiency and precise modifications compared to generic tools like Python or C#.
 
-There's a lot you can do with these proprietary languages and there a designated web pages full of documentation that I cannot fully encapuslate in a single blog post. Instead, I want to focus on fulfilling your pretend boss' request using Zoho's scripting language, Deluge, and REST APIs.
+These proprietary languages offer many capabilities, with extensive documentation available online that I can't fully cover in a single blog post. Instead, I want to focus on fulfilling your pretend boss's request using Zoho's scripting language, Deluge, and REST APIs.
 
 ## Zoho Deluge and REST API
 
 ### Zoho Deluge:
 
-Deluge, short for "Data Enriched Language for the Universal Grid Environment", is Zohos proprietarys scripting language. It comes with a variety of features such as:
-- built-in functions and wrappers that are specifically tailored for Zoho applications
-- no reliance on external libraries
-- designed to be easy to read
-- applications built with the language have fully normalized relational data models
-- the language is query-integrated
+Deluge, short for 'Data Enriched Language for the Universal Grid Environment,' is Zoho's proprietary scripting language. It offers various features, including:
+- Built-in functions and wrappers tailored for Zoho applications
+- No reliance on external libraries
+- A design that prioritizes readability
+- Fully normalized relational data models for applications
+- Integrated query capabilities
 
 Here are some examples of the language:
 
@@ -48,13 +48,21 @@ zoho.crm.updateRecord("Contacts", contact_id, contact);
 
 <!--https://www.zoho.com/deluge/help/deluge-editor.html#:~:text=Deluge%20editor%20allows%20users%20to%20dry%20run%20their%20scripts%20using-->
 
-Because Zoho Deluge is a proprietary language, there is currently no official method to write code locally from an editor (such as VS Code). Instead, Zoho integrates their CRM coding editors within its various applications for Zoho users exclusively. There are online sandbox editors [See here](https://deluge.zoho.com/tryout), but those are limited in the type of functions they are allowed to run. Nevertheless, I will continue this blog assuming you have access to any of Zoho's applications and will demonstrate my code snippets used.
+
+Because Zoho Deluge is a proprietary language, there is currently no official way to write code locally from an editor like VS Code. Instead, Zoho integrates its CRM coding editors within various applications exclusively for Zoho users. Online sandbox editors [See here](https://deluge.zoho.com/tryout) are available but limited in the functions they can run. For this blog, I will assume you have access to Zoho's applications and will explain the code snippets I use.
 
 If you want to learn more about Zoho Deluge, you can follow this link: [Click Me!](https://deluge.zoho.com/learndeluge#Welcome!)
 
 ### REST APIs
 
-If you've ever delved into the world of programming or software design, chances are you know about REST APIs. If not, then I highly recommend you take some time to do a deep dive into learning all aobut it. REST APIs are the backbone of modern web services, powering everything from social media platforms to e-commerce sites. They are extremely common and learning about how they transfer data between different softewares using their standard HTTP methods like ```GET```, ```POST```, ```PUT```, and ```DELETE``` will do wonders for your future interactions with software. For the sake of brevity-and mataining focus on the article topic-, know that REST APIs are stateless, meaning that requests from a client to a server are independent and must contain all the information needed to process the request.
+Imagine if apps were people at a networking event—APIs (Application Programming Interfaces) would be the translators making sure everyone understands each other. APIs enable different software applications to communicate, share data, and perform tasks. They have a set of rules and protocols that allows one software program to interact with another. 
+
+REST APIs are one flavor of the API sundae. Others, like SOAP, RPC, and GraphQL, each bring their own twists to the table. But unlike the other API types, REST APIs <strong>dominate</strong> the API usage space. According to Postman, the number one tool for API management and design, [89%](https://analyzingalpha.com/api-statistics) of respondents in their 2022 survey reported their API architecture to be specifically designed around REST APIs.
+
+REST APIs are the backbone of modern web services, powering everything from social media platforms to e-commerce sites. They facilitate data transfer between software using standard HTTP methods like ```GET```, ```POST```, ```PUT```, and ```DELETE```. Another important fact I want you to know is that REST APIs are stateless, meaning each client request is independent and must include all necessary information for processing.
+
+Still confused? Imagine you're at a fast-food counter, and each time you order, you (the client) provide all the details needed—like your name, order, and payment—without relying on the cashier (the server) to remember anything from previous orders. Each order (or request) is independent and complete by itself. Here's a simple GET request example in Python:
+
 
 Still confused? Well imagine you're at a fast food counter, and each time you order, you (client) provide all the details needed (like your name, order, and payment) without relying on the cashier (server) to remember anything from your previous orders. Each order (or request) is independent and complete by itself. Here's a simple ```GET``` request example in Python:
 
