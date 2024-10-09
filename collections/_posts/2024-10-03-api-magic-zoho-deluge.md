@@ -59,13 +59,9 @@ Imagine if apps were people at a networking event—APIs (Application Programmin
 
 REST APIs are one flavor of the API sundae. Others, like SOAP, RPC, and GraphQL, each bring their own twists to the table. But unlike the other API types, REST APIs <strong>dominate</strong> the API usage space. According to Postman, the number one tool for API management and design, [89%](https://analyzingalpha.com/api-statistics) of respondents in their 2022 survey reported their API architecture to be specifically designed around REST APIs.
 
-REST APIs are the backbone of modern web services, powering everything from social media platforms to e-commerce sites. They facilitate data transfer between software using standard HTTP methods like ```GET```, ```POST```, ```PUT```, and ```DELETE```. Another important fact I want you to know is that REST APIs are stateless, meaning each client request is independent and must include all necessary information for processing.
+REST APIs are the backbone of modern web services, powering everything from social media platforms to e-commerce sites. They facilitate data transfer between software using standard HTTP methods like ```GET```, ```POST```, ```PUT```, and ```DELETE```. For future coding, remember that REST APIs are stateless. Each client request is independent and must include all necessary information for processing.
 
-Still confused? Imagine you're at a fast-food counter, and each time you order, you (the client) provide all the details needed—like your name, order, and payment—without relying on the cashier (the server) to remember anything from previous orders. Each order (or request) is independent and complete by itself. Here's a simple GET request example in Python:
-
-
-Still confused? Well imagine you're at a fast food counter, and each time you order, you (client) provide all the details needed (like your name, order, and payment) without relying on the cashier (server) to remember anything from your previous orders. Each order (or request) is independent and complete by itself. Here's a simple ```GET``` request example in Python:
-
+What does that mean? Well imagine you're at a fast food counter, and each time you order, you (client) provide all the details needed (like your name, order, and payment) without relying on the cashier (server) to remember anything from your previous orders. Each order (or request) is independent and complete by itself. Here's a simple ```GET``` request example in Python:
 
 ```python
 import requests
@@ -90,25 +86,24 @@ Another important aspect of REST APIs is their nature of returning data in a str
 
 ## Begin with the User Story and Research
 
-For this blog walkthrough lets first define the project scope and all of the necessary pieces of data we want to handle.
+For this blog walkthrough let's first define the project scope and all of the necessary pieces of data we want to handle.
 
 ### User Story
-Let's assume that your pretend boss' favorite golf course is Augusta National Golf Course and he wants the notification on Zoho Cliq (the "Slack" of Zoho). He wants to be able to input a Zoho Cliq command "/golftoday" and receive weather data on the golf course. He selects the following data points from your provided lists of common weather data: 
+Assume your pretend boss's favorite golf course is Augusta National Golf Course. He wants Zoho Cliq (the 'Slack' of Zoho) to notify him. By inputting the command '/golftoday,' he'll receive the golf course weather data. He selects from your provided lists of common weather data points:
 
-- Temperature: Actual recorded temperature (in Farenheit)
-- Apparent Temp: Temperature as it is felt by the human body
-- Precipitation: Overall probability of moisture from the sky whether it’s rain, sleet, or hail.
-- Rain: Probability of rain hitting the course. Steady precipitation that covers a large area.
-- Showers: Probability of showers hitting the course. Brief, often intense, moments of precipitation.
-- Cloud Cover: Percentage of the sky obscured by clouds when observed from the course.
-- Wind Speed: Speed of the wind in miles per hour
-- Wind Direction: The angle measured clockwise from the north direction on a compass (Azimuths). For example, 0° is North, 180° is South, and 270° is West.
+- Temperature:Recorded temperature (°F)
+- Apparent Temp: Felt temperature by the body
+- Precipitation: Chance of moisture (rain, sleet, hail)
+- Rain: Likelihood of steady rain
+- Showers: Likelihood of brief, intense rain
+- Cloud Cover: Percentage of the sky covered by clouds
+- Wind Speed: Wind speed (mph)
+- Wind Direction: Measured clockwise from North (0° is North, 180° is South, 270° is West).
 
-He also commented that it would be cool if your command could also display the recorded and predicted hourly temperatures of the day. 
+He suggested your command should also display both recorded and predicted hourly temperatures.
 
 ### Research
-
-With the user story obtained and data specified, we can proceed into reasearching the topic. Don't worry, this is a walkthrough blog and I've already done the research for you. I will just briefly discuss my research process so you understand how our code will function further in the walkthrough. 
+With the user story and data specified, we can proceed to research. Don't worry, this is a walkthrough blog and I've already done it for you. I'll briefly discuss my research process so you understand how the code will function further in the walkthrough:
 
 1. We are pulling current data from external sources into Zoho Cliq, so REST APIs will be useful here
 2. Open Metro has a free API that can obtain our data desired, but it requires both Longitude (-82.0200) and Latitude (33.5000)
