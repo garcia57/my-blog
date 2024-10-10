@@ -6,7 +6,7 @@ authors: ["Andy Garcia"]
 categories: ["Zoho Deluge", "REST API"]
 description: This blog post will walk you through using external APIs within Zoho Deluge. You'll learn what Zoho Deluge is, how to leverage external APIs effectively, and see a real-world data science example in action. Additionally, the guide will cover best practices for storing and managing the data obtained from these APIs.
 thumbnail: "/assets/images/gen/blog/blog-21-thumbnail.webp"
-image: "/assets/images/gen/blog/blog-22.webp"
+image: "/assets/images/gen/blog/blog-21.webp"
 comments: false
 
 #meta_title: "API Magic with Zoho Deluge: An In-Depth Guide with a real world example"
