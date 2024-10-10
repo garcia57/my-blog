@@ -14,7 +14,7 @@ comments: false
 #meta_image: "/assets/images/og/og-twitter-blog-image.webp"
 ---
 
-## Introduction to Zoho Deluge and Its Relevance for Data Science
+## Introducing Zoho Deluge: A Gateway to Harnassing Data Science
 
 Picture this: You're at your desk a lead's contact details when your boss asks you to create a daily weather report on his favorite golf course. You consider using Python or C#, but it could take days—and you're not confident in those languages.
 
@@ -91,7 +91,7 @@ For this blog walkthrough let's first define the project scope and all of the ne
 ### User Story
 Assume your pretend boss's favorite golf course is Augusta National Golf Course. He wants Zoho Cliq (the 'Slack' of Zoho) to notify him. By inputting the command '/golftoday,' he'll receive the golf course weather data. He selects from your provided lists of common weather data points:
 
-- Temperature:Recorded temperature (°F)
+- Temperature: Recorded temperature (°F)
 - Apparent Temp: Felt temperature by the body
 - Precipitation: Chance of moisture (rain, sleet, hail)
 - Rain: Likelihood of steady rain
@@ -113,7 +113,8 @@ With the user story and data specified, we can proceed to research. Don't worry,
 
 ## Project Setup
 
-From our research we know the first thing we need is the API response for the weather response. I would highly recommend you follow along with this process to see what an API response looks like. From [Open Metro's Documentation](https://open-meteo.com/en/docs#) we input our Longitude (-82.0200) and Latitude (33.5000) coordinate. We then specify our pretend boss' desired data values in both the 'Hourly' and 'Current' sections. For convenience, we switch the 'Settings' to the following:
+First, we need the API response for the weather data. Follow along on your own device to see an example of an API response. Using [Open Metro's Documentation](https://open-meteo.com/en/docs#), we input the golf course's coordinates (-82.0200, 33.5000) from a quick Google search. We then specify our pretend boss's desired data in both 'Hourly' and 'Current' sections. For convenience, we switch the 'Settings' to the following:
+
 - Temperature Unit: Fahrenheit °F
 - Wind Speed Unit: Mph
 - Precipitation Unit: Inch
@@ -123,7 +124,7 @@ You can click on this link for an example of what the API response looks like: [
 
 ### Root Level Keys and Nested Objects
 
-For those who are new to JSON responses from API, I will quickly explain what your are seeing. If you are already familiar with this root level keys and nested objects, please feel free to skip this section.
+For those who are new to JSON responses from APIs, I will quickly explain what you are seeing. If you are already familiar with root-level keys and nested objects, please feel free to skip this section.
 
 <strong>Root Level Keys:</strong> These are the top-most keys in a JSON response. They contain direct values or nested objects. They act like the main categories of your data. In your JSON response, these would be those root level keys:
 
@@ -181,8 +182,7 @@ Some nested objects can contain multiple lists instead of key-value pairs. This 
     }
 ```
 
-Here, both ```time``` and ```temperature_2m``` are seperate lists. Why? Well, each index in the ```time``` list correlates directly with the same index in the ```temperature_2m list```, providing an hour-by-hour record of temperatures for the current day. I have seen some REST API responses output nested objects within nested objects. Thankfully, the weather response here is simple enough to work with without any in-depth transformation.
-
+Here, both ```time``` and ```temperature_2m``` are separate lists. Each index in ```time``` correlates with the same index in ```temperature_2m```, providing an hourly temperatures for the day. Some REST API responses output nested objects within nested objects. Thankfully, this weather response is simple enough without requiring any in-depth transformation 
 
 ### Design our Zoho Cliq Message Card
 
