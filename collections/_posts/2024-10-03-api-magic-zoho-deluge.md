@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "API Magic with Zoho Deluge: An In-Depth Guide with a real world example"
+title: "API Magic with Zoho Deluge: \nAn In-Depth Guide with a real world example"
 date: 2024-09-18T09:49:03Z
 authors: ["Andy Garcia"]
 categories: ["Zoho Deluge", "REST API"]
