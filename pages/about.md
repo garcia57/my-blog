@@ -9,7 +9,9 @@ image: "/assets/images/gen/content/content-5.webp"
 
 # Who are you?
 
-My name is Andy Garcia, a born and raised Texan. Growing up I always got into trouble by trying to find new ways to streamline my life. I gave my mother a Putting tomorrow's poptarts in the toaster the night before, calendering 30 minutes to confess to my crush in two weeks, writing our families grocery list that I believed 
+My name is Andy Garcia, a born-and-raised Texan. Since childhood, I’ve been driven by a passion for simplicity. It started with my attempts to streamline my mom’s PB&J-making technique—much to her annoyance. Today, that same passion fuels my work as I work with clients to turn innovation ideas into practical, market-ready solutions, proving just how far my PB&J roots have taken me (with far less peanut butter on the counter).
+
+
 
 Often many individuals will work in teams covering different aspects of the design process, although some designers will cover them all. Web design partially overlaps web engineering in the broader scope of web development.
 
