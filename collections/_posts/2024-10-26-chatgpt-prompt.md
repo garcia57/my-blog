@@ -5,8 +5,8 @@ date: 2024-10-26T09:49:03Z
 authors: ["Andy Garcia"]
 categories: ["ChatGPT", "Education"]
 description: This blog post will walk you through learning how to write better GPT responses to obtain more refined responses.
-thumbnail: "/assets/images/gen/blog/blog-21-thumbnail.webp"
-image: "/assets/images/gen/blog/blog-21.webp"
+thumbnail: "/assets/images/gen/blog/blog-22-thumbnail.webp"
+image: "/assets/images/gen/blog/blog-22.webp"
 comments: false
 
 ---
