@@ -11,9 +11,17 @@ comments: false
 
 ---
 
-## Introducing Zoho Deluge: A Gateway to Harnassing Data Science
+## openFDA and Ozempic
 
-Picture this: 
+There has been a lot of talk about drug problems. And no, I'm not referring to the ones dicussed in intense immigration arguements. I'm talking about the drugs you get from the white angel of death, doctors! Or at least that's the opinion of some who have followed onto a recent popularity trend of using Ozempic. 
+
+Ozempic is used for managing Type 2 diabetes but that is not what is captivating the attention of millions of Americans. It's Ozempics secondary, off-label effect, the drugs ability to help individuals lose weight. And lose weight you do, at an insane amount. Reports from users taking Ozempic have sworn the drug has caused them to lose to as much as 30 pounds in a month. In comparison, exercise and a clean diet, on average, nets you a loss of about 3-5 pounds per month.
+
+It's litle wonder why so many have flooded clinics, hopeing to pull favors from doctors to get a prescription for the drug. And when not possible, many purchase for off-brand or out-of-country drug alternatives, hoping to regain their past body types again. I would know, as I have family members who have switched to Ozempic or similar drugs for managing their diabetes and also hope to cut a few pounds on the side. And believe me readers, the drug is not so miraculous when you analyze the adverse effects it causes users. 
+
+It is because of this curiosity that I have created 2 seperate but important datasets for those who wish to explore the adverse effects of Ozempic. I will explain my reasoning in keeping these datasets seperate further into this blog.
+
+My dataset project explores clinical and real-world data related to Ozempic's side effects and patient-reported experiences. By comparing clinical adverse event reports with user reviews, my datasets project aims to provide a clearer picture of the medication's impact on diverse patient demographics and highlight discrepancies or consistencies between clinical trials and everyday usage.
 
 ## Zoho Deluge and REST API
 
@@ -34,7 +42,15 @@ Another important JSON or XML.
 
 ## Fdds
 
-For thi to handle.
+
+Data Reliability and Consistency: Clinical data from openFDA is highly regulated, while review data from Drugs.com is self-reported and unverified. Mixing these two sources without careful consideration could lead to biases or misinterpretations.
+
+Sample Bias: Patients who report adverse events to the FDA are often different from those who leave reviews on Drugs.com. Those who leave reviews may tend to report experiences based on satisfaction or frustration, which could bias sentiment analysis results.
+
+Integration Difficulty: Clinical data and review data have few shared identifiers. Without a unique key like a report ID, merging directly is challenging and could lead to inaccuracies if done incorrectly.
+
+Mixed Purpose: Clinical adverse event data is collected for regulatory oversight and safety monitoring, whereas reviews are often written for other patients or general audiences, which might lead to fundamental differences in data scope and purpose.
+
 
 ### User Story
 Assume  selects from your provided lists of common weather data points:
