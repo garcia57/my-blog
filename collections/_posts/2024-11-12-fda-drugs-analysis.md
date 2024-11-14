@@ -5,8 +5,8 @@ date: 2024-11-12T09:49:03Z
 authors: ["Andy Garcia"]
 categories: ["Drugs", "EDA"]
 description: This blog post will disucss my curated dataset from openFDA and webscrapped reviews on Ozempic from drugs.com.
-thumbnail: "/assets/images/gen/blog/blog-22-thumbnail.webp"
-image: "/assets/images/gen/blog/blog-22.webp"
+thumbnail: "/assets/images/gen/blog/blog-22-thumbnail.png"
+image: "/assets/images/gen/blog/blog-22.png"
 comments: false
 
 ---
