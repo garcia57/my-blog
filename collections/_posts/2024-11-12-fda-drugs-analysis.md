@@ -81,6 +81,9 @@ My Key Findings
 
 {% include framework/shortcodes/figure.html src="/assets/files/Top_10_Side_Effects_Ozempic.png" title="Top_10_Side_Effects_Ozempic" caption="Andy Garcia" alt="Photo of Zoho Cliq Command Style" link="https://figma.com" target="_blank" %}
 
+<details>
+<summary>Avg Patient Age Code </summary>
+
 ```py
 # Recalculate the top 10 most frequently reported side effects for the cleaned dataset
 filtered_side_effect_counts = df['reaction_meddra'].value_counts().head(10)
@@ -96,12 +99,21 @@ plt.show()
 
 ```
 
+</details>
+
+
+
 I created a pie chart to show the distribution of adverse events that resulted in obtaining a serious medical complication for Ozempic. 
 
 Key Insights
 - High Proportion of Serious Cases: A significant portion of reported events from openFDA database on Ozempic are classified as "Serious," indicating that while Ozempic may be effective for its intended uses, it also comes with high risks from complications.
 
 {% include framework/shortcodes/figure.html src="/assets/files/Severity-Dist-Ozempic.png" title="Severity Distribution -Ozempic" caption="Andy Garcia" alt="Photo of Zoho Cliq Command Style" link="https://figma.com" target="_blank" %}
+
+
+<details>
+<summary>Avg Patient Age Code </summary>
+
 
 ```py
 
@@ -116,6 +128,9 @@ plt.show()
 
 ```
 
+</details>
+
+
 Age Distribution of Patients Reporting Adverse Events
 The histogram below shows the age distribution of patients who reported adverse events related to Ozempic, with the mean and median ages marked for reference.
 
@@ -126,9 +141,10 @@ Key Observations
 {% include framework/shortcodes/figure.html src="/assets/files/Age-dis-Ozempic.png" title="The message card is scrollable, showing you the hourly temps as well" caption="Andy Garcia" alt="Photo of Zoho Cliq Command Style" link="https://figma.com" target="_blank" %}
 
 
+<details>
+<summary>Avg Patient Age Code </summary>
 
 ```py
-
 # Convert 'patient_age' to numeric to handle any non-numeric entries
 df['patient_age'] = pd.to_numeric(df['patient_age'], errors='coerce')
 
@@ -153,7 +169,10 @@ plt.legend()
 plt.show()
 
 ```
+</details>
 
+
+Avg Sentinment by Reported Side Effect
 The chart below shows the average sentiment score associated with different side effects as reported in Ozempic user reviews on Drugs.com
 
 Sentiment scores range from -1 (negative) to +1 (positive), which reflect the overall tone of users’ experiences with each side effect.
@@ -163,11 +182,12 @@ Key Observations
 - Mixed Sentiments for Other Effects: Fatigue and headache also show lower sentiment scores, though they are less negative than nausea or diarrhea. Appetite suppression has a more neutral score, which may be due to how some users might view a disinterest to eat as a postiive side effect for weight management.
 
 
-{% include framework/shortcodes/figure.html src="/assets/files/avg-sentiment-sideeffect-ozempic.png" title="The message card is scrollable, showing you the hourly temps as well" caption="Andy Garcia" alt="Photo of Zoho Cliq Command Style" link="https://figma.com" target="_blank" %}
+{% include framework/shortcodes/figure.html src="/assets/files/avg-sentiment-sideeffect-ozempic.png" title="Avg Sentinment by Reported Side Effect" caption="Andy Garcia" alt="Photo of Zoho Cliq Command Style" link="https://figma.com" target="_blank" %}
 
+<details>
+<summary>Avg Sentinment by Reported Side Effect Code </summary>
 
 ```py
-
 import pandas as pd
 from textblob import TextBlob
 import matplotlib.pyplot as plt
@@ -211,9 +231,21 @@ plt.grid(axis='y', linestyle='--', alpha=0.7)
 plt.show()
 
 ```
+</details>
 
+
+
+Sentiment Distribution of Ozempic User Reviews
+The bar chart below illustrates the overall sentiment distribution among Ozempic user reviews, classified into positive, neutral, and negative categories.
+
+Key Takeaways
+- Notable Negative Sentiment: A significant portion of reviews fall into the negative category, reflecting dissatisfaction potentially linked to side effects or unmet expectations.
+- Overwhelming Positive Sentinment: Many reviewers had positive sentiments towards Ozempic, depite how serious the complications are from a negative medicinal reaction.
 
 {% include framework/shortcodes/figure.html src="/assets/files/sent-dist-allreviews-ozempic.png" title="The message card is scrollable, showing you the hourly temps as well" caption="Andy Garcia" alt="Photo of Zoho Cliq Command Style" link="https://figma.com" target="_blank" %}
+
+<details>
+<summary>Topic vs Sentiment Code</summary>
 
 ```py
 
@@ -243,12 +275,25 @@ plt.xlabel("Sentiment")
 plt.ylabel("Frequency")
 plt.xticks(rotation=0)
 plt.show()
-
-
 ```
 
+</details>
 
-{% include framework/shortcodes/figure.html src="/assets/files/topic-v-sent-ozempic.png" title="The message card is scrollable, showing you the hourly temps as well" caption="Andy Garcia" alt="Photo of Zoho Cliq Command Style" link="https://figma.com" target="_blank" %}
+
+
+Topic vs Sentiment Distribution for Ozempic User Reviews
+My stacked bar chart categorizes Ozempic user reviews into topics and displays the distribution of sentiments (positive, neutral, and negative) within each.
+
+Key Takeaways
+- Varied Sentiments by Topic: Topics like "Dosage & Weight Loss" and "Weight Loss & Diabetes Management" show mixed sentiments, possibly reflecting varied user experiences with Ozempic’s effectiveness and side effects in these areas.
+- Negative Sentiment in Side Effects: The topic "Side Effects & Diabetes" has a higher proportion of negative sentiment, which aligns with previous observations on common side effects and their impact on patient satisfaction. Of course, some of the positive sentiments could be due to the side effect of weight loss that some would consider a positive effect.
+
+
+{% include framework/shortcodes/figure.html src="/assets/files/topic-v-sent-ozempic.png" title="Topic vs Sentiment Distribution for Ozempic User Reviews" caption="Andy Garcia" alt="Photo of Zoho Cliq Command Style" link="https://figma.com" target="_blank" %}
+
+
+<details>
+<summary>Topic vs Sentiment Code</summary>
 
 ```py
 import matplotlib.pyplot as plt
@@ -308,6 +353,7 @@ plt.legend(title="Sentiment")
 plt.show()
 
 ```
+</details>
 
 
 ### Conclusive Dataset Overview
