@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Analysis on FDA Drug Ozempic"
-date: 2024-10-26T09:49:03Z
+date: 2024-11-12T09:49:03Z
 authors: ["Andy Garcia"]
 categories: ["Drugs", "EDA"]
 description: This blog post will disucss my curated dataset from openFDA and webscrapped reviews on Ozempic from drugs.com.
