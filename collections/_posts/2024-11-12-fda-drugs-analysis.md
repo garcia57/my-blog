@@ -33,7 +33,7 @@ I will identify the following:
 
 These graphs will explore the commonalities / discrepancies clinical and real-world data related to Ozempic's side effects and patient-reported experiences. By comparing clinical adverse event reports with user reviews, my datasets project aims to provide a clearer picture of the medication's impact on patient perceptions.
 
-### Ethical Considerations and Good Scraping Practices
+## Ethical Considerations and Good Scraping Practices
 
 Data ethics and responsible data gathering were prioritized in this project. Here’s how I ensured ethical compliance:
 
@@ -41,7 +41,7 @@ Data ethics and responsible data gathering were prioritized in this project. Her
 - Personal Identifiability: The datasources were screened to ensure excluding any personally identifiable information (PII), protecting patient privacy.
 - Respectful API Use: Data was collected using openFDA’s official API, which explicitly permits data extraction within reasonable limits. Rate limiting and data retrieval intervals were implemented to respect server load and prevent excessive requests.
 
-### Steps for Data Collection
+## Steps for Data Collection
 
 You can follow these steps to replicate a similar data gathering project:
 
@@ -51,7 +51,7 @@ You can follow these steps to replicate a similar data gathering project:
 4. Store and Clean Data: Store data in CSV or JSON format, then clean it by handling missing values, categorizing reactions, and setting up sentiment analysis for user reviews.
 
 
-### Key Metrics and Counts
+## Key Metrics and Counts
 
 Total Sample Size: Over 400 individual records of adverse events related to Ozempic from openFDA.
 
@@ -68,7 +68,7 @@ Numerical Summaries of Key Numeric Variables:
 - Received Date (receivedate): The date when the adverse event was reported and received by the FDA. Useful for providing a timeline on adverse event reports and identifying trends/spikes over time (e.g., seasonal/social media patterns, post-approval phases).
 
 
-### Analytical Analysis
+## Analytical Analysis
 
 In this section, I explore the dataset and some of the findings made with it:
 
@@ -115,6 +115,21 @@ Key Insights
 <summary>Avg Patient Age Code </summary>
 
 
+    ```js
+    # Calculating the proportion of serious vs. non-serious cases
+    severity_counts = df['serious'].value_counts()
+
+    # Plotting the severity distribution chart as a pie chart
+    plt.figure(figsize=(8, 8))
+    plt.pie(severity_counts, labels=['Serious', 'Non-Serious'], autopct='%1.1f%%', startangle=140)
+    plt.title("Severity Distribution of Adverse Events")
+    plt.show()
+    ```
+
+</details>
+
+
+
 ```py
 
 # Calculating the proportion of serious vs. non-serious cases
@@ -128,7 +143,6 @@ plt.show()
 
 ```
 
-</details>
 
 
 Age Distribution of Patients Reporting Adverse Events
