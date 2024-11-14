@@ -17,17 +17,21 @@ There has been a lot of talk about drug problems. And no, I'm not referring to t
 
 Ozempic is used for managing Type 2 diabetes but that is not what is captivating the attention of millions of Americans. It's Ozempics secondary, off-label effect, the drugs ability to help individuals lose weight. And lose weight you do, at an insane amount. Reports from users taking Ozempic have sworn the drug has caused them to lose to as much as 30 pounds in a month. In comparison, exercise and a clean diet, on average, nets you a loss of about 3-5 pounds per month.
 
-It's litle wonder why so many have flooded clinics, hopeing to pull favors from doctors to get a prescription for the drug. And when not possible, many purchase for off-brand or out-of-country drug alternatives, hoping to regain their past body types again. I would know, as I have family members who have switched to Ozempic or similar drugs for managing their diabetes and also hope to cut a few pounds on the side. And believe me readers, the drug is not so miraculous when you analyze the adverse effects it causes users. Of course, what you hear on the news, ads, social media differs from optained 
-
-It is because of this curiosity that I have created 2 seperate but important datasets for those who wish to explore the adverse effects of Ozempic. I will explain my reasoning in keeping these datasets seperate further into this blog.
-
-My dataset project explores clinical and real-world data related to Ozempic's side effects and patient-reported experiences. By comparing clinical adverse event reports with user reviews, my datasets project aims to provide a clearer picture of the medication's impact on diverse patient demographics and highlight discrepancies or consistencies between clinical trials and everyday usage.
+It's litle wonder why so many have flooded clinics, hopeing to pull favors from doctors to get a prescription for the drug. And when not possible, many purchase off-brand or out-of-country drug alternatives, hoping to regain their past body types again. I would know, as I have family members who have switched to Ozempic or similar drugs for managing their diabetes and also hope to cut a few pounds on the side. And believe me readers, the drug is not so miraculous when you analyze the adverse effects it causes users. Of course, what you hear on the news, ads, social media differs from the data obtained by the FDA, which I will demonstrate as well. 
 
 ## Motivating Question
 
-My dataset project seeks to answer the following: What are the most common and severe side effects associated with Ozempic, and how do they differ between clinical trial data and real-world patient experiences?
+Its this disparity in perception that fascinates and motivates me to do this project. My dataset project seeks to answer the following: What are the most common and severe side effects associated with Ozempic, and how does this drugs perception differ between obtained adverse effect reports and real-world patient reviews?
 
-I will identify patterns in adverse reactions, assess user sentiment, and determine if specific side effects are underreported in clinical trials or emerge uniquely in real-world scenarios.
+I will identify the following:
+- Top 10 most reported side effects
+- Severity distribution of reports obtained by the FDA
+- Age distribution of people reporting adverse effects from using Ozempic
+- Average sentiment by most commonly reported side effect in Drugs.com reviews of the drug
+- Overall Sentinment distribution across all Drugs.com review
+- Topic vs Sentiment Distribution for Ozempic User Reviews 
+
+These graphs will explore the commonalities / discrepancies clinical and real-world data related to Ozempic's side effects and patient-reported experiences. By comparing clinical adverse event reports with user reviews, my datasets project aims to provide a clearer picture of the medication's impact on patient perceptions.
 
 ### Ethical Considerations and Good Scraping Practices
 
@@ -49,7 +53,7 @@ You can follow these steps to replicate a similar data gathering project:
 
 ### Key Metrics and Counts
 
-Total Sample Size: Over 500 individual records of adverse events related to Ozempic from openFDA.
+Total Sample Size: Over 400 individual records of adverse events related to Ozempic from openFDA.
 
 Counts of Categorical Variables:
 
@@ -62,6 +66,14 @@ Numerical Summaries of Key Numeric Variables:
 
 - Patient Age (patient_age): Summary statistics (ex: mean, median, minimum, maximum) to understand the age range of affected patients.
 - Received Date (receivedate): The date when the adverse event was reported and received by the FDA. Useful for providing a timeline on adverse event reports and identifying trends/spikes over time (e.g., seasonal/social media patterns, post-approval phases).
+
+
+### Analytical Analysis
+
+
+
+
+
 
 
 
