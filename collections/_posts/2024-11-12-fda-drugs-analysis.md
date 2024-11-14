@@ -65,9 +65,40 @@ Numerical Summaries of Key Numeric Variables:
 
 
 
-### Other Date Columns in openFDA Dataset
+### Conclusive Dataset Overview
+This project uses two distinct but complementary datasets to examine Ozempic’s impact from both clinical and real-world perspectives. While these datasets are not merged, they offer unique insights when analyzed in parallel, allowing for a holistic view of adverse events and patient experiences.
 
-Below is an analysis of each key column in openFDA's dataset that I chose to use:
+1. Clinical Adverse Event Dataset (openFDA)
+
+    The clinical dataset from openFDA provides detailed reports of adverse events based on official clinical and post-market surveillance data. This dataset covers:
+
+    - Demographics: Information on patient age, sex, and country of origin, allowing for demographic analysis of clinical adverse events.
+    - Side Effects: Categorized by type and severity, capturing common reactions (e.g., nausea, fatigue) and serious events, including those resulting in death.
+    - Administration Methods: Specifies the route of administration, such as subcutaneous injection, offering insights into whether certain methods correlate with specific adverse effects.
+
+    This dataset provides a structured, medically reviewed view of Ozempic’s side effects and severity, suitable for identifying clinically significant trends in adverse reactions.
+
+2. User Sentiment Dataset (Drugs.com)
+    
+    The user sentiment dataset includes self-reported experiences from Ozempic users, gathered from Drugs.com reviews. Although less structured than the clinical dataset, this data adds depth by capturing patient-reported side effects, satisfaction, and sentiment in everyday use. This dataset covers:
+
+    - Side Effects: Mentions of side effects by users, including commonly reported symptoms like nausea, fatigue, and weight changes, allowing for sentiment-based analysis of adverse reactions.
+    - Sentiment Analysis: Patient reviews are categorized by sentiment polarity (positive, neutral, negative), providing a broader view of how users feel about the medication’s effects.
+    - Real-World Experiences: Unlike the clinical data, this dataset includes nuanced, subjective reports, which may reveal side effects or concerns that are less prevalent in formal clinical reporting.
+
+3. Complementary Insights
+
+    Together, these datasets allow for comparative analysis, showing both the frequency and severity of side effects (from clinical data) and user-reported satisfaction and concerns (from sentiment analysis). By examining both datasets in parallel, insights into patterns become apparent that may not be visible in either dataset alone. For example, sentiment analysis on the general comments of the drug are heavily positive, despite how often users obtain a critical condition as an adverse effect. Of course, the sample size of the reviews is small and obtaining much larger samples would better represent the general publics view on the drug for sentiment analysis. 
+
+My dual-dataset approach hopefully enables you, the reader, to obtain a comprehensive understanding of Ozempic’s impact, while also illustrating how clinical and real-world perspectives align or diverge.
+
+
+
+
+
+### Side Note:
+
+Below is an furhter analysis of the other key column in openFDA's dataset that I chose to use:
 
 - safetyreportid: A unique identifier for each safety report in the openFDA dataset. This ID is critical for linking and cross-referencing individual reports.
 - seriousnessdeath: Specifies if the adverse event resulted in death. Useful in understanding the mortality risk associated with Ozempic
@@ -88,6 +119,9 @@ Below is an analysis of each key column in openFDA's dataset that I chose to use
 
 
 
+
+
+
 ### REST APIs
 
 Imagine EST APIs <strong>dominate</strong> the API usage space. According to Postman, the number one tool for API management and design, [89%](https://analyzingalpha.com/api-statistics) of respondents in their 2022 survey reported their API architecture to be specifically designed around REST APIs.
@@ -99,58 +133,6 @@ Another important JSON or XML.
 
 ## Fdds
 
-
-Data Reliability and Consistency: Clinical data from openFDA is highly regulated, while review data from Drugs.com is self-reported and unverified. Mixing these two sources without careful consideration could lead to biases or misinterpretations.
-
-Sample Bias: Patients who report adverse events to the FDA are often different from those who leave reviews on Drugs.com. Those who leave reviews may tend to report experiences based on satisfaction or frustration, which could bias sentiment analysis results.
-
-Integration Difficulty: Clinical data and review data have few shared identifiers. Without a unique key like a report ID, merging directly is challenging and could lead to inaccuracies if done incorrectly.
-
-Mixed Purpose: Clinical adverse event data is collected for regulatory oversight and safety monitoring, whereas reviews are often written for other patients or general audiences, which might lead to fundamental differences in data scope and purpose.
-
-
-### User Story
-Assume  selects from your provided lists of common weather data points:
-
-- Temperature: Recorded temperature (°F)
-
-### Research
-briefly discuss my research process so you understand how the code will function further in the walkthrough:
-
-1. We are pulling current data from external sources into Zoho Cliq, so REST APIs will be useful here
-2. Open Metro has a free API that can obtain our data desired, but it requires both Longitude (-82.0200) and Latitude (33.5000)
-
-## Project Setup
-
-First, we need
-
-###  Keys
-
-For ed objects, please feel free to skip this section.
-
-simple enough without requiring any in-depth transformation 
-
-### Design our Zoho
-
-There are plenty of documentation detailing how to access the "Command" build-out tool from the "Bots & Tools" link in Zoho Cliq. Therefore I will not 
-
-## Step 1: invokeURL
-
-With both our API Url createed and our 
-
-To begin, we 
-
-### Is requesting?
-
-Sadly, no. Other this process for any other parameters desired.
-
-## Step 2: Wind
-
-You may have no
-
-## Step 3: Hour
-
-We have now com
 
 ## Step 4: Putting it all together
 
