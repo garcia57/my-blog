@@ -93,9 +93,6 @@ This project uses two distinct but complementary datasets to examine Ozempic’s
 My dual-dataset approach hopefully enables you, the reader, to obtain a comprehensive understanding of Ozempic’s impact, while also illustrating how clinical and real-world perspectives align or diverge.
 
 
-
-
-
 ### Side Note:
 
 Below is an furhter analysis of the other key column in openFDA's dataset that I chose to use:
@@ -113,37 +110,5 @@ Below is an furhter analysis of the other key column in openFDA's dataset that I
 - drug_indication: Indicates the primary reason for prescribing the drug, typically the patient’s diagnosis (e.g., Type 2 diabetes). Useful as it can provide insights into whether certain health conditions increase the likelihood of specific adverse events.
 
 > Yes, this is probably WAY too many features for a dataset, I know that. I also know that I won't be doing numerous or intense data exploration using my datasets, as this is a BLOG READ and not my conclusive project for an employer. I added these since openFDA's dataset IS VERY CONFUSING so if there was someone who was interested in doing this for a resume booster, they could see what they COULD do with this side of the dataset.  
-
-
-
-
-
-
-
-
-
-### REST APIs
-
-Imagine EST APIs <strong>dominate</strong> the API usage space. According to Postman, the number one tool for API management and design, [89%](https://analyzingalpha.com/api-statistics) of respondents in their 2022 survey reported their API architecture to be specifically designed around REST APIs.
-
-RE like ```GET```, ```POST```, ```PUT```, and ```DELETE```. For future coding, remember that REST APIs are stateless. Each client request is independent 
-
-
-Another important JSON or XML.
-
-## Fdds
-
-
-## Step 4: Putting it all together
-
-\output a message that looks similar to this (I stylized mine for fun):
-
-{% include framework/shortcodes/figure.html src="/assets/files/Zoho-Message-Card-Image.webp" title="The message card is scrollable, showing you the hourly temps as well" caption="Andy Garcia" alt="Photo of Zoho Cliq Command Style" link="https://figma.com" target="_blank" %}
-
-
-## Conclusion
-
-
-Ye didn't discuss so I hope you take time to research more about this side of programming. 
 
 ### Additional Resources
