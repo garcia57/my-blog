@@ -70,34 +70,219 @@ Numerical Summaries of Key Numeric Variables:
 
 ### Analytical Analysis
 
-{% include framework/shortcodes/figure.html src="/assets/files/Top_10_Side_Effects_Ozempic.png" title="The message card is scrollable, showing you the hourly temps as well" caption="Andy Garcia" alt="Photo of Zoho Cliq Command Style" link="https://figma.com" target="_blank" %}
+{% include framework/shortcodes/figure.html src="/assets/files/Top_10_Side_Effects_Ozempic.png" title="Top_10_Side_Effects_Ozempic" caption="Andy Garcia" alt="Photo of Zoho Cliq Command Style" link="https://figma.com" target="_blank" %}
 
-aa
+```py
+# Recalculate the top 10 most frequently reported side effects for the cleaned dataset
+filtered_side_effect_counts = df['reaction_meddra'].value_counts().head(10)
+
+# Plotting the revised side effect frequency chart
+plt.figure(figsize=(10, 6))
+filtered_side_effect_counts.plot(kind='bar')
+plt.title("Top 10 Most Frequently Reported Side Effects for Ozempic (Filtered)")
+plt.xlabel("Side Effect")
+plt.ylabel("Count")
+plt.xticks(rotation=45)
+plt.show()
+
+```
 
 
-{% include framework/shortcodes/figure.html src="/assets/files/Severity-Dist-Ozempic.png" title="The message card is scrollable, showing you the hourly temps as well" caption="Andy Garcia" alt="Photo of Zoho Cliq Command Style" link="https://figma.com" target="_blank" %}
+{% include framework/shortcodes/figure.html src="/assets/files/Severity-Dist-Ozempic.png" title="Severity Distribution -Ozempic" caption="Andy Garcia" alt="Photo of Zoho Cliq Command Style" link="https://figma.com" target="_blank" %}
 
+
+```py
+
+# Calculating the proportion of serious vs. non-serious cases
+severity_counts = df['serious'].value_counts()
+
+# Plotting the severity distribution chart as a pie chart
+plt.figure(figsize=(8, 8))
+plt.pie(severity_counts, labels=['Serious', 'Non-Serious'], autopct='%1.1f%%', startangle=140)
+plt.title("Severity Distribution of Adverse Events")
+plt.show()
+
+```
 
 aa
 
 {% include framework/shortcodes/figure.html src="/assets/files/Age-dis-Ozempic.png" title="The message card is scrollable, showing you the hourly temps as well" caption="Andy Garcia" alt="Photo of Zoho Cliq Command Style" link="https://figma.com" target="_blank" %}
 
-aa
+
+
+```py
+
+# Convert 'patient_age' to numeric to handle any non-numeric entries
+df['patient_age'] = pd.to_numeric(df['patient_age'], errors='coerce')
+
+# Filter ages to a realistic range (1 to 100 years)
+ages = df[(df['patient_age'] >= 1) & (df['patient_age'] <= 100)]['patient_age'].dropna()
+
+# Recalculate the mean age after filtering
+mean_age = ages.mean()
+
+# Create the histogram plot with mean and median markers
+plt.figure(figsize=(8, 6))
+plt.hist(ages, bins=30, density=True, alpha=0.3, color='blue', edgecolor='black')
+plt.axvline(np.median(ages), color='green', linestyle='-', label=f'Median Age: {np.median(ages):.1f}')
+plt.axvline(mean_age, color='red', linestyle='--', label=f'Mean Age: {mean_age:.1f}')
+
+# Adding labels, title, and legend
+plt.title("Age Distribution of Patients Reporting Adverse Events for Ozempic")
+plt.xlabel("Age (Years)")
+plt.ylabel("Density")
+plt.legend()
+
+plt.show()
+
+```
+
 
 {% include framework/shortcodes/figure.html src="/assets/files/avg-sentiment-sideeffect-ozempic.png" title="The message card is scrollable, showing you the hourly temps as well" caption="Andy Garcia" alt="Photo of Zoho Cliq Command Style" link="https://figma.com" target="_blank" %}
 
-aa
+
+```py
+
+import pandas as pd
+from textblob import TextBlob
+import matplotlib.pyplot as plt
+
+# Sample reviews and sentiment analysis
+reviews_df = pd.read_csv("ozempic_reviews.csv")
+
+# Conduct sentiment analysis on each review
+reviews_df['sentiment'] = reviews_df['review_text'].apply(lambda x: TextBlob(x).sentiment.polarity)
+
+# Define common side effects and associated keywords
+side_effects_keywords = {
+    "Nausea": ["nausea", "vomit", "upset stomach"],
+    "Fatigue": ["fatigue", "tired", "exhausted"],
+    "Headache": ["headache", "migraine"],
+    "Appetite Suppression": ["appetite", "not hungry", "reduced appetite"],
+    "Diarrhoea":["diarrhoea","loose stool"],
+    "Pancreatitis":["pancreatitis"]
+}
+
+# Created a column to categorize reviews by side effect
+def categorize_side_effect(text):
+    for side_effect, keywords in side_effects_keywords.items():
+        if any(keyword in text.lower() for keyword in keywords):
+            return side_effect
+    return "Other"  # Use "Other" for reviews without specified side effects
+
+reviews_df['side_effect_category'] = reviews_df['review_text'].apply(categorize_side_effect)
+
+# Calculate average sentiment for each side effect category
+avg_sentiment_by_side_effect = reviews_df.groupby('side_effect_category')['sentiment'].mean()
+
+# Plot the average sentiment for each side effect
+plt.figure(figsize=(10, 6))
+avg_sentiment_by_side_effect.plot(kind='bar', color='skyblue', edgecolor='black')
+plt.title("Average Sentiment by Reported Side Effect in Ozempic Reviews")
+plt.xlabel("Side Effect Category")
+plt.ylabel("Average Sentiment Score")
+plt.xticks(rotation=45)
+plt.grid(axis='y', linestyle='--', alpha=0.7)
+plt.show()
+
+```
+
 
 {% include framework/shortcodes/figure.html src="/assets/files/sent-dist-allreviews-ozempic.png" title="The message card is scrollable, showing you the hourly temps as well" caption="Andy Garcia" alt="Photo of Zoho Cliq Command Style" link="https://figma.com" target="_blank" %}
 
-zz
+```py
 
-{% include framework/shortcodes/figure.html src="/assets/files/sent-dist-allreviews-ozempic.png" title="The message card is scrollable, showing you the hourly temps as well" caption="Andy Garcia" alt="Photo of Zoho Cliq Command Style" link="https://figma.com" target="_blank" %}
+from textblob import TextBlob
 
-zz
+# Apply sentiment analysis to classify each review as positive, neutral, or negative
+def classify_sentiment(text):
+    polarity = TextBlob(text).sentiment.polarity
+    if polarity > 0:
+        return 'Positive'
+    elif polarity < 0:
+        return 'Negative'
+    else:
+        return 'Neutral'
+
+# Add a new column for sentiment classification
+reviews_df['sentiment'] = reviews_df['review_text'].apply(classify_sentiment)
+
+# Count the occurrences of each sentiment category
+sentiment_counts = reviews_df['sentiment'].value_counts()
+
+# Plot the sentiment distribution
+plt.figure(figsize=(8, 6))
+sentiment_counts.plot(kind='bar', color=['green', 'gray', 'red'])
+plt.title("Sentiment Distribution of Ozempic User Reviews")
+plt.xlabel("Sentiment")
+plt.ylabel("Frequency")
+plt.xticks(rotation=0)
+plt.show()
+
+
+```
+
 
 {% include framework/shortcodes/figure.html src="/assets/files/topic-v-sent-ozempic.png" title="The message card is scrollable, showing you the hourly temps as well" caption="Andy Garcia" alt="Photo of Zoho Cliq Command Style" link="https://figma.com" target="_blank" %}
 
+```py
+import matplotlib.pyplot as plt
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.decomposition import LatentDirichletAllocation
+
+# Ensure custom_stopwords is a list, which is compatible with CountVectorizer
+custom_stopwords = ["ozempic", "week", "now", "type", "month", "started", "first", "will", "taking", "took", "told", "going"]
+
+# Vectorize the text data
+vectorizer = CountVectorizer(stop_words=custom_stopwords, max_df=0.9, min_df=5)
+review_term_matrix = vectorizer.fit_transform(reviews_df['review_text'].astype(str))
+
+# Initialize and fit the LDA model
+lda_model = LatentDirichletAllocation(n_components=5, random_state=42)
+lda_model.fit(review_term_matrix)
+
+
+
+# Assign topics to each review based on the highest probability of the topic for that review
+# Get the topic distribution for each review
+topic_distribution = lda_model.transform(review_term_matrix)
+reviews_df['topic'] = topic_distribution.argmax(axis=1)
+
+# Map topic numbers to descriptive labels based on identified themes
+topic_labels = {
+    0: "General Experiences",
+    1: "Side Effects & Diabetes",
+    2: "General Comments",
+    3: "Dosage & Weight Loss",
+    4: "Weight Loss & Diabetes Management"
+}
+
+# Apply the topic labels to the new 'topic_label' column
+reviews_df['topic_label'] = reviews_df['topic'].map(topic_labels)
+
+# Group by the descriptive topic labels and sentiment for a clearer stacked bar chart
+topic_sentiment_counts_labeled = reviews_df.groupby(['topic_label', 'sentiment']).size().unstack().fillna(0)
+
+# Plotting the labeled stacked bar chart for Topic vs Sentiment Distribution
+# Define colors for each sentiment category
+sentiment_colors = {'Positive': 'green', 'Neutral': 'gray', 'Negative': 'red'}
+
+# Plotting the labeled stacked bar chart for Topic vs Sentiment Distribution with specified colors
+plt.figure(figsize=(12, 6))
+topic_sentiment_counts_labeled.plot(
+    kind='bar', 
+    stacked=True, 
+    color=[sentiment_colors[col] for col in topic_sentiment_counts_labeled.columns], 
+    ax=plt.gca()
+)
+plt.title("Topic vs Sentiment Distribution for Ozempic User Reviews")
+plt.xlabel("Topic")
+plt.ylabel("Review Count")
+plt.xticks(rotation=45)
+plt.legend(title="Sentiment")
+plt.show()
+
+```
 
 
 ### Conclusive Dataset Overview
