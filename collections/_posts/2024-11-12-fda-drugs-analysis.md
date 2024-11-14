@@ -47,29 +47,45 @@ You can follow these steps to replicate a similar data gathering project:
 4. Store and Clean Data: Store data in CSV or JSON format, then clean it by handling missing values, categorizing reactions, and setting up sentiment analysis for user reviews.
 
 
-### Analysis of openFDA Data Columns
+### Key Metrics and Counts
+
+Total Sample Size: Over 500 individual records of adverse events related to Ozempic from openFDA.
+
+Counts of Categorical Variables:
+
+- Adverse Reaction Type (reaction_meddra): Provides counts for each adverse reaction type, such as nausea, fatigue, and injection site pain, etc.
+- Seriousness (serious): Categorizes cases as serious (1) or non-serious(0), with counts showing the proportion of severe cases.
+- Patient Sex (patient_sex): Number of cases by patient sex by Male (1), Female (2), or Unspecified (3) .
+- Drug Administration Route (drug_admin_route): Breakdown of the methods of administration, such as subcutaneous injection or other routes.
+
+Numerical Summaries of Key Numeric Variables:
+
+- Patient Age (patient_age): Summary statistics (ex: mean, median, minimum, maximum) to understand the age range of affected patients.
+- Received Date (receivedate): The date when the adverse event was reported and received by the FDA. Useful for providing a timeline on adverse event reports and identifying trends/spikes over time (e.g., seasonal/social media patterns, post-approval phases).
+
+
+
+### Other Date Columns in openFDA Dataset
 
 Below is an analysis of each key column in openFDA's dataset that I chose to use:
 
 - safetyreportid: A unique identifier for each safety report in the openFDA dataset. This ID is critical for linking and cross-referencing individual reports.
-- serious: Indicates whether the reported adverse event was classified as serious (1) or non-serious (0)
 - seriousnessdeath: Specifies if the adverse event resulted in death. Useful in understanding the mortality risk associated with Ozempic
-- receivedate: The date when the adverse event report was received by the FDA. Useful for trend analysis over time, such as if adverse events correlate with specific periods (e.g., seasonal/social media patterns, post-approval phases).
 - reportercountry: Indicates the country of the reporter (e.g., the patient, healthcare provider). Useful if seeking to identify any country-specific trends or potential differences in adverse events across regions.
 - reporterqualification: Specifies the qualification of the person who reported the event (e.g., physician, pharmacist). Useful if you want to explore if the reported adverse affects of Ozempic are captured more in-depth by a certain party.
-- patient_age: The age of the patient experiencing the adverse event. Useful for identifying age groups more vulnerable to certain side effects.
 - patient_age_unit: Unit of age measurement (e.g., years, months). This field ensures that patient age data is consistently interpreted.
-- patient_sex: Indicates the patient's sex (male, female, or unspecified). Useful for sex-based analysis, espicailly if it can reveal gender-related patterns in adverse reactions to Ozempic.
-- reaction_meddra: Specifies the adverse reaction as coded by the Medical Dictionary for Regulatory Activities (MedDRA). This standardized coding system allows for detailed categorization and comparison of adverse reactions, essential for identifying the most common or severe types of reactions associated with Ozempic.
 - drug_name: The name of the drug involved in the adverse event report (in my openFDA dataset, its only Ozempic).
 - drug_characterization: Characterizes the drug's role in the adverse event. This field helps differentiate between adverse reactions directly attributed to Ozempic and those that might be related to other medications taken concurrently. There are 3 characterizations I use: 
   1. Causal (suspected cause of the event).
   2. Concurrent (taken concurrently but not suspected of causing the event).
   3. Synergistic (may have interacted with the causal drug).
-- drug_admin_route: Specifies the route of administration for the drug (e.g., subcutaneous injection). Useful in analyzing if specific administration methods correlate with higher instances of adverse effects.
 - drug_indication: Indicates the primary reason for prescribing the drug, typically the patient’s diagnosis (e.g., Type 2 diabetes). Useful as it can provide insights into whether certain health conditions increase the likelihood of specific adverse events.
 
 > Yes, this is probably WAY too many features for a dataset, I know that. I also know that I won't be doing numerous or intense data exploration using my datasets, as this is a BLOG READ and not my conclusive project for an employer. I added these since openFDA's dataset IS VERY CONFUSING so if there was someone who was interested in doing this for a resume booster, they could see what they COULD do with this side of the dataset.  
+
+
+
+
 
 
 ### REST APIs
