@@ -112,7 +112,7 @@ Key Insights
 
 
 <details>
-<summary>Avg Patient Age Code </summary>
+<summary>Avg Patient Age Code </summary><code>
 
 
     ```js
@@ -126,22 +126,9 @@ Key Insights
     plt.show()
     ```
 
-</details>
+</code></details>
 
 
-
-```py
-
-# Calculating the proportion of serious vs. non-serious cases
-severity_counts = df['serious'].value_counts()
-
-# Plotting the severity distribution chart as a pie chart
-plt.figure(figsize=(8, 8))
-plt.pie(severity_counts, labels=['Serious', 'Non-Serious'], autopct='%1.1f%%', startangle=140)
-plt.title("Severity Distribution of Adverse Events")
-plt.show()
-
-```
 
 
 
