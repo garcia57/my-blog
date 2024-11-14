@@ -84,10 +84,19 @@ aa
 
 aa
 
-{% include framework/shortcodes/figure.html src="/assets/files/Zoho-Message-Card-Image.webp" title="The message card is scrollable, showing you the hourly temps as well" caption="Andy Garcia" alt="Photo of Zoho Cliq Command Style" link="https://figma.com" target="_blank" %}
+{% include framework/shortcodes/figure.html src="/assets/files/avg-sentiment-sideeffect-ozempic.png" title="The message card is scrollable, showing you the hourly temps as well" caption="Andy Garcia" alt="Photo of Zoho Cliq Command Style" link="https://figma.com" target="_blank" %}
 
+aa
 
+{% include framework/shortcodes/figure.html src="/assets/files/sent-dist-allreviews-ozempic.png" title="The message card is scrollable, showing you the hourly temps as well" caption="Andy Garcia" alt="Photo of Zoho Cliq Command Style" link="https://figma.com" target="_blank" %}
 
+zz
+
+{% include framework/shortcodes/figure.html src="/assets/files/sent-dist-allreviews-ozempic.png" title="The message card is scrollable, showing you the hourly temps as well" caption="Andy Garcia" alt="Photo of Zoho Cliq Command Style" link="https://figma.com" target="_blank" %}
+
+zz
+
+{% include framework/shortcodes/figure.html src="/assets/files/topic-v-sent-ozempic.png" title="The message card is scrollable, showing you the hourly temps as well" caption="Andy Garcia" alt="Photo of Zoho Cliq Command Style" link="https://figma.com" target="_blank" %}
 
 
 
