@@ -70,6 +70,15 @@ Numerical Summaries of Key Numeric Variables:
 
 ### Analytical Analysis
 
+In this section, I explore the dataset and some of the findings made with it:
+
+Below is the top 10 most frequently reported side effects for Ozempic. This bar chart highlights these side effects and their counts, offering a clear view of the most common patient experiences.
+
+My Key Findings
+- Prevalence of Gastrointestinal Issues: Side effects like nausea, vomiting, and diarrhea appear most frequently, suggesting that gastrointestinal reactions are a significant aspect of Ozempic’s adverse effect.
+- Other Common Reactions: Fatigue and headache were also frequently reported, indicating that Ozempic’s effects are not limited to the digestive system but can impact overall energy and comfort.
+
+
 {% include framework/shortcodes/figure.html src="/assets/files/Top_10_Side_Effects_Ozempic.png" title="Top_10_Side_Effects_Ozempic" caption="Andy Garcia" alt="Photo of Zoho Cliq Command Style" link="https://figma.com" target="_blank" %}
 
 ```py
@@ -87,9 +96,12 @@ plt.show()
 
 ```
 
+I created a pie chart to show the distribution of adverse events that resulted in obtaining a serious medical complication for Ozempic. 
+
+Key Insights
+- High Proportion of Serious Cases: A significant portion of reported events from openFDA database on Ozempic are classified as "Serious," indicating that while Ozempic may be effective for its intended uses, it also comes with high risks from complications.
 
 {% include framework/shortcodes/figure.html src="/assets/files/Severity-Dist-Ozempic.png" title="Severity Distribution -Ozempic" caption="Andy Garcia" alt="Photo of Zoho Cliq Command Style" link="https://figma.com" target="_blank" %}
-
 
 ```py
 
@@ -104,7 +116,12 @@ plt.show()
 
 ```
 
-aa
+Age Distribution of Patients Reporting Adverse Events
+The histogram below shows the age distribution of patients who reported adverse events related to Ozempic, with the mean and median ages marked for reference.
+
+Key Observations
+- Diverse Age Range: The distribution shows that adverse events were reported across a broad range of ages, with the mean age slightly above the median, suggesting a slight skew toward older age groups.
+- The majority of reports on the adverse effects of Ozempic come from individuals around 50 years old
 
 {% include framework/shortcodes/figure.html src="/assets/files/Age-dis-Ozempic.png" title="The message card is scrollable, showing you the hourly temps as well" caption="Andy Garcia" alt="Photo of Zoho Cliq Command Style" link="https://figma.com" target="_blank" %}
 
@@ -136,6 +153,14 @@ plt.legend()
 plt.show()
 
 ```
+
+The chart below shows the average sentiment score associated with different side effects as reported in Ozempic user reviews on Drugs.com
+
+Sentiment scores range from -1 (negative) to +1 (positive), which reflect the overall tone of users’ experiences with each side effect.
+
+Key Observations
+- Negative Sentiment for Nausea and Diarrhea: Side effects like nausea and diarrhea are associated with the lowest sentiment scores, indicating a generally negative experience among users who reported these symptoms in their review.
+- Mixed Sentiments for Other Effects: Fatigue and headache also show lower sentiment scores, though they are less negative than nausea or diarrhea. Appetite suppression has a more neutral score, which may be due to how some users might view a disinterest to eat as a postiive side effect for weight management.
 
 
 {% include framework/shortcodes/figure.html src="/assets/files/avg-sentiment-sideeffect-ozempic.png" title="The message card is scrollable, showing you the hourly temps as well" caption="Andy Garcia" alt="Photo of Zoho Cliq Command Style" link="https://figma.com" target="_blank" %}
