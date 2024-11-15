@@ -70,6 +70,24 @@ Numerical Summaries of Key Numeric Variables:
 
 ## Analytical Analysis
 
+
+<details>
+  <summary>Click to expand code</summary>
+
+  <pre><code class="language-python">
+# Calculating the proportion of serious vs. non-serious cases
+severity_counts = df['serious'].value_counts()
+
+# Plotting the severity distribution chart as a pie chart
+plt.figure(figsize=(8, 8))
+plt.pie(severity_counts, labels=['Serious', 'Non-Serious'], autopct='%1.1f%%', startangle=140)
+plt.title("Severity Distribution of Adverse Events")
+plt.show()
+  </code></pre>
+
+</details>
+
+
 In this section, I explore the dataset and some of the findings made with it:
 
 Below is the top 10 most frequently reported side effects for Ozempic. This bar chart highlights these side effects and their counts, offering a clear view of the most common patient experiences.
