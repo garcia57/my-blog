@@ -287,8 +287,6 @@ Key Takeaways
 {% include framework/shortcodes/figure.html src="/assets/files/topic-v-sent-ozempic.png" title="Topic vs Sentiment Distribution for Ozempic User Reviews" caption="Andy Garcia" alt="Photo of Zoho Cliq Command Style" link="https://figma.com" target="_blank" %}
 
 
-
-
 <details>
   <summary>Click to expand code</summary>
 
@@ -351,7 +349,7 @@ Key Takeaways
 </details>
 
 
-### Conclusive Dataset Overview
+## Conclusive Dataset Overview
 This project uses two distinct but complementary datasets to examine Ozempic’s impact from both clinical and real-world perspectives. While these datasets are not merged, they offer unique insights when analyzed in parallel, allowing for a holistic view of adverse events and patient experiences.
 
 1. Clinical Adverse Event Dataset (openFDA)
@@ -378,23 +376,9 @@ This project uses two distinct but complementary datasets to examine Ozempic’s
 
 My dual-dataset approach hopefully enables you, the reader, to obtain a comprehensive understanding of Ozempic’s impact, while also illustrating how clinical and real-world perspectives align or diverge.
 
+### Resources Links:
 
-### Side Note:
-
-Below is an furhter analysis of the other key column in openFDA's dataset that I chose to use:
-
-- safetyreportid: A unique identifier for each safety report in the openFDA dataset. This ID is critical for linking and cross-referencing individual reports.
-- seriousnessdeath: Specifies if the adverse event resulted in death. Useful in understanding the mortality risk associated with Ozempic
-- reportercountry: Indicates the country of the reporter (e.g., the patient, healthcare provider). Useful if seeking to identify any country-specific trends or potential differences in adverse events across regions.
-- reporterqualification: Specifies the qualification of the person who reported the event (e.g., physician, pharmacist). Useful if you want to explore if the reported adverse affects of Ozempic are captured more in-depth by a certain party.
-- patient_age_unit: Unit of age measurement (e.g., years, months). This field ensures that patient age data is consistently interpreted.
-- drug_name: The name of the drug involved in the adverse event report (in my openFDA dataset, its only Ozempic).
-- drug_characterization: Characterizes the drug's role in the adverse event. This field helps differentiate between adverse reactions directly attributed to Ozempic and those that might be related to other medications taken concurrently. There are 3 characterizations I use: 
-  1. Causal (suspected cause of the event).
-  2. Concurrent (taken concurrently but not suspected of causing the event).
-  3. Synergistic (may have interacted with the causal drug).
-- drug_indication: Indicates the primary reason for prescribing the drug, typically the patient’s diagnosis (e.g., Type 2 diabetes). Useful as it can provide insights into whether certain health conditions increase the likelihood of specific adverse events.
-
-> Yes, this is probably WAY too many features for a dataset, I know that. I also know that I won't be doing numerous or intense data exploration using my datasets, as this is a BLOG READ and not my conclusive project for an employer. I added these since openFDA's dataset IS VERY CONFUSING so if there was someone who was interested in doing this for a resume booster, they could see what they COULD do with this side of the dataset.  
-
-### Additional Resources
+- openFDA API Documentation [Link] (https://open.fda.gov/apis/): Comprehensive guide on how to use the openFDA API to gather and analyze drug data.
+- Drugs.com Ozempic Reviews [Link] (https://www.drugs.com/comments/semaglutide/ozempic.html): For accessing user reviews to understand public sentiment and patient experiences with Ozempic.
+- TextBlob Documentation [Link] (https://textblob.readthedocs.io/en/dev/): Learn how to conduct basic sentiment analysis using TextBlob.
+- Latent Dirichlet Allocation (LDA) with Scikit-Learn [Link] (https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.LatentDirichletAllocation.html): A guide on using LDA for topic modeling, as applied in this analysis to categorize user reviews.
