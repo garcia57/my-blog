@@ -382,3 +382,5 @@ My dual-dataset approach hopefully enables you, the reader, to obtain a comprehe
 - Drugs.com Ozempic Reviews [Link](https://www.drugs.com/comments/semaglutide/ozempic.html): For accessing user reviews to understand public sentiment and patient experiences with Ozempic.
 - TextBlob Documentation [Link](https://textblob.readthedocs.io/en/dev/): Learn how to conduct basic sentiment analysis using TextBlob.
 - Latent Dirichlet Allocation (LDA) with Scikit-Learn [Link](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.LatentDirichletAllocation.html): A guide on using LDA for topic modeling, as applied in this analysis to categorize user reviews.
+
+Link to my code: [Link](https://github.com/garcia57/Adverse-Effects-openFDA/tree/main)
