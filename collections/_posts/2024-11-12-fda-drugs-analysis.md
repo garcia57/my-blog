@@ -68,7 +68,7 @@ Numerical Summaries of Key Numeric Variables:
 - Received Date (receivedate): The date when the adverse event was reported and received by the FDA. Useful for providing a timeline on adverse event reports and identifying trends/spikes over time (e.g., seasonal/social media patterns, post-approval phases).
 
 
-## Analytical Analysis
+## Analytical Analysisz
 
 In this section, I explore the dataset and some of the findings made with it:
 
