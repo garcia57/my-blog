@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Analysis on FDA Drug Ozempic"
+title: "Ozempic Under the Microscope: A Deep Dive into Its Controversial Effects"
 date: 2024-11-12T09:49:03Z
 authors: ["Andy Garcia"]
 categories: ["Drugs", "EDA"]
-description: This blog post will disucss my curated dataset from openFDA and webscrapped reviews on Ozempic from drugs.com.
+description: Explore the hidden truths and potential dangers of Ozempic in comparison to online review as we dissect the drugs controversial effects in this in-depth analysis.
 thumbnail: "/assets/images/gen/blog/blog-22-thumbnail.png"
 image: "/assets/images/gen/blog/blog-22.png"
 comments: false
@@ -83,6 +83,7 @@ My Key Findings
 
 {% include framework/shortcodes/figure.html src="/assets/files/Top_10_Side_Effects_Ozempic.png" title="Top_10_Side_Effects_Ozempic" caption="Andy Garcia" alt="Photo of Zoho Cliq Command Style" link="https://figma.com" target="_blank" %}
 
+Note: I have hidden my code snippets in various accordians to preserve the design of my blog (as seen below). Simply click on the accordian to see my code.  
 
 <details>
   <summary>Click to expand code</summary>
@@ -372,9 +373,11 @@ This project uses two distinct but complementary datasets to examine Ozempic’s
 
 3. Complementary Insights
 
-    Together, these datasets allow for comparative analysis, showing both the frequency and severity of side effects (from clinical data) and user-reported satisfaction and concerns (from sentiment analysis). By examining both datasets in parallel, insights into patterns become apparent that may not be visible in either dataset alone. For example, sentiment analysis on the general comments of the drug are heavily positive, despite how often users obtain a critical condition as an adverse effect. Of course, the sample size of the reviews is small and obtaining much larger samples would better represent the general publics view on the drug for sentiment analysis. 
+    In the social craze of obtaining the media hyped wonder drug, my project sheds light on the unreported, hidden negative effects of the drug. Using this comparative analysis, you can clearly see just how harmful taking this drug is even for those who are specifically prescribed to diabetes management. I have showed you both the frequency and severity of side effects (from clinical data) and user-reported satisfaction and concerns (from sentiment analysis). While it is tempting to hop on the train of seemingly magical weightloss, please see beyond the sparkles and confetti. And finally, this drug is doctor prescribed for individuals who are grateful for another day of life to get their diabetes under control. Please do not make it any more harder for them to get the care they need if you only want to shave a few pounds here and there.
+    
+    NOTE: One weakness of this exploration is the small sample size of the reviews on Drugs.com as obtaining much larger samples would better represent the general publics view on the drug for sentiment analysis.
 
-My dual-dataset approach hopefully enables you, the reader, to obtain a comprehensive understanding of Ozempic’s impact, while also illustrating how clinical and real-world perspectives align or diverge.
+Stay safe and stay healthy!
 
 ### Resources Links:
 
