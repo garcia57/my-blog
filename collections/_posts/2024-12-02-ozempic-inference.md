@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Ozempic and Drugs.com. Exploring the Dataset"
-date: 2024-11-12T09:49:03Z
+title: "Ozempic Under the Microscope: A Deep Dive into Its Controversial Effects"
+date: 2024-12-02T09:49:03Z
 authors: ["Andy Garcia"]
 categories: ["Drugs", "EDA"]
-description: Exploring my Ozempic curated dataset.
+description: Explore the hidden truths and potential dangers of Ozempic in comparison to online review as we dissect the drugs controversial effects in this in-depth analysis.
 thumbnail: "/assets/images/gen/blog/blog-22-thumbnail.png"
 image: "/assets/images/gen/blog/blog-22.png"
 comments: false
@@ -21,9 +21,14 @@ It's litle wonder why so many have flooded clinics, hopeing to pull favors from 
 
 ## Motivating Question
 
-Its this disparity in perception that fascinates and motivates me to do this project. My dataset project seeks to answer the following: What are the most common and severe side effects associated with Ozempic, and how does this drugs perception differ between obtained adverse effect reports and real-world patient reviews?
+Its this disparity in perception that fascinates and motivates me to do this project. In a previous blog post I discussed my dataset and how it was curated. Below I will dicuss the inferences from that dataset and explore some burning questions I have on the topic. Of course I can't curate a blog that explores hundreds of inferences I have made, so I will stick to just two:
 
-I will identify the following:
+1. Across all users of the drug, the general side effects obtained from Ozempic do not outweigh patient's perspective towards the medication.
+2. 
+
+What are the most common and severe side effects associated with Ozempic, and how does this drugs perception differ between obtained adverse effect reports and real-world patient reviews?
+
+Overall, my goal is to show  identify the following:
 - Top 10 most reported side effects
 - Severity distribution of reports obtained by the FDA
 - Age distribution of people reporting adverse effects from using Ozempic
@@ -33,44 +38,6 @@ I will identify the following:
 
 These graphs will explore the commonalities / discrepancies clinical and real-world data related to Ozempic's side effects and patient-reported experiences. By comparing clinical adverse event reports with user reviews, my datasets project aims to provide a clearer picture of the medication's impact on patient perceptions.
 
-## Ethical Considerations and Good Scraping Practices
-
-Data ethics and responsible data gathering were prioritized in this project. Here’s how I ensured ethical compliance:
-
-- Data Source Verification: The data comes from publicly accessible resources—openFDA and Drugs.com, both of which were selected due to their allowance for data usage in research and analytical purposes. The datasets were curated to ensure its access aligns with both platform's guidelines.
-- Personal Identifiability: The datasources were screened to ensure excluding any personally identifiable information (PII), protecting patient privacy.
-- Respectful API Use: Data was collected using openFDA’s official API, which explicitly permits data extraction within reasonable limits. Rate limiting and data retrieval intervals were implemented to respect server load and prevent excessive requests.
-
-## Steps for Data Collection
-
-You can follow these steps to replicate a similar data gathering project:
-
-1. Define your Data's Needs: Identify relevant fields, such as adverse reactions, patient demographics, and reported severity, to answer your motivating question.
-2. Access openFDA Data: Register for an API key (if applicable) from openFDA and use it to request data on Ozempic’s adverse events.
-3. Scrape Drugs.com User Reviews: Use a web scraping tool (I used Python's BeautifulSoup package) to extract user reviews, paying attention to rate limits and ethical scraping guidelines.
-4. Store and Clean Data: Store data in CSV or JSON format, then clean it by handling missing values, categorizing reactions, and setting up sentiment analysis for user reviews.
-
-
-## Key Metrics and Counts
-
-Total Sample Size: Over 400 individual records of adverse events related to Ozempic from openFDA.
-
-Counts of Categorical Variables:
-
-- Adverse Reaction Type (reaction_meddra): Provides counts for each adverse reaction type, such as nausea, fatigue, and injection site pain, etc.
-- Seriousness (serious): Categorizes cases as serious (1) or non-serious(0), with counts showing the proportion of severe cases.
-- Patient Sex (patient_sex): Number of cases by patient sex by Male (1), Female (2), or Unspecified (3) .
-- Drug Administration Route (drug_admin_route): Breakdown of the methods of administration, such as subcutaneous injection or other routes.
-
-Numerical Summaries of Key Numeric Variables:
-
-- Patient Age (patient_age): Summary statistics (ex: mean, median, minimum, maximum) to understand the age range of affected patients.
-- Received Date (receivedate): The date when the adverse event was reported and received by the FDA. Useful for providing a timeline on adverse event reports and identifying trends/spikes over time (e.g., seasonal/social media patterns, post-approval phases).
-
-
-## Analytical Analysisz
-
-In this section, I explore the dataset and some of the findings made with it:
 
 
 ### Top 10 Most Common Side Effects Ozempic
