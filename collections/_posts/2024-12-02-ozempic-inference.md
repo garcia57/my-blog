@@ -17,35 +17,20 @@ There has been a lot of talk about drug problems. And no, I'm not referring to t
 
 Ozempic is used for managing Type 2 diabetes but that is not what is captivating the attention of millions of Americans. It's Ozempics secondary, off-label effect, the drugs ability to help individuals lose weight. And lose weight you do, at an insane amount. Reports from users taking Ozempic have sworn the drug has caused them to lose to as much as 30 pounds in a month. In comparison, exercise and a clean diet, on average, nets you a loss of about 3-5 pounds per month.
 
-It's litle wonder why so many have flooded clinics, hopeing to pull favors from doctors to get a prescription for the drug. And when not possible, many purchase off-brand or out-of-country drug alternatives, hoping to regain their past body types again. I would know, as I have family members who have switched to Ozempic or similar drugs for managing their diabetes and also hope to cut a few pounds on the side. And believe me readers, the drug is not so miraculous when you analyze the adverse effects it causes users. Of course, what you hear on the news, ads, social media differs from the data obtained by the FDA, which I will demonstrate as well. 
+It's litle wonder why so many have flooded clinics, hoping to pull favors to get a prescription for the drug. And when not possible, many purchase off-brand or out-of-country drug alternatives, hoping to regain their past body types again. I would know, as I have family members who have switched to Ozempic or similar drugs for managing their diabetes and also hope to cut a few pounds on the side. And believe me readers, the drug is not so miraculous when you analyze the adverse effects it causes users. 
 
-## Motivating Question
+## My Inference
 
-Its this disparity in perception that fascinates and motivates me to do this project. In a previous blog post I discussed my dataset and how it was curated. Below I will dicuss the inferences from that dataset and explore some burning questions I have on the topic. Of course I can't curate a blog that explores hundreds of inferences I have made, so I will stick to just two:
-
-1. Across all users of the drug, the general side effects obtained from Ozempic do not outweigh patient's perspective towards the medication.
-2. 
-
-What are the most common and severe side effects associated with Ozempic, and how does this drugs perception differ between obtained adverse effect reports and real-world patient reviews?
-
-Overall, my goal is to show  identify the following:
-- Top 10 most reported side effects
-- Severity distribution of reports obtained by the FDA
-- Age distribution of people reporting adverse effects from using Ozempic
-- Average sentiment by most commonly reported side effect in Drugs.com reviews of the drug
-- Overall Sentinment distribution across all Drugs.com review
-- Topic vs Sentiment Distribution for Ozempic User Reviews 
-
-These graphs will explore the commonalities / discrepancies clinical and real-world data related to Ozempic's side effects and patient-reported experiences. By comparing clinical adverse event reports with user reviews, my datasets project aims to provide a clearer picture of the medication's impact on patient perceptions.
-
-
+Of course, what you hear on the news, ads, social media differs from the data obtained by the FDA. But most interesting to me is that despite the drugs harmful effects, overall patient perspective is generally postiive of the drug. In my own exploration of the many posted reviews, people love the postiive effects of the drug, even when there is physical harm done to their bodies. That is fascinating to me and it is that discrepancy that I will explore as my primary inference in this blog post.
 
 ### Top 10 Most Common Side Effects Ozempic
-Below is the top 10 most frequently reported side effects for Ozempic. This bar chart highlights these side effects and their counts, offering a clear view of the most common patient experiences.
+To start explaining my inference, I want to show the 10 most frequently reported side effects for Ozempic. This bar chart highlights these side effects and their counts, offering a clear view of the most common patient experiences.
 
 My Key Findings
 - Prevalence of Gastrointestinal Issues: Side effects like nausea, vomiting, and diarrhea appear most frequently, suggesting that gastrointestinal reactions are a significant aspect of Ozempic’s adverse effect.
 - Other Common Reactions: Fatigue and headache were also frequently reported, indicating that Ozempic’s effects are not limited to the digestive system but can impact overall energy and comfort.
+
+So Ozempic causes life hampering effects for individuals who takke the medication. And from the sheer count towards nausea we can see this side effect is not unique to specific individuals. Add onto that vomiting and diahoea...well taking Ozempic sounds more like neeidng to eat moldy bread each day.
 
 
 {% include framework/shortcodes/figure.html src="/assets/files/Top_10_Side_Effects_Ozempic.png" title="Top_10_Side_Effects_Ozempic" caption="Andy Garcia" alt="Photo of Zoho Cliq Command Style" link="https://figma.com" target="_blank" %}
@@ -72,10 +57,10 @@ Note: I have hidden my code snippets in various accordians to preserve the desig
 </details>
 
 ### Severity Distribution of Adverse Events
-I created a pie chart to show the distribution of adverse events that resulted in obtaining a serious medical complication for Ozempic. 
+The next piece of context towards understanding the negative effects of Ozempic is how often complications from taking the drug turn into serious medical issues. For that I created a pie chart to show this distribution. And please be aware, the FDA labels a complication as serious when it causes: the patient to end up in the emergency room, causes a permanent disability, or has the individual in a life threatening state.
 
 Key Insights
-- High Proportion of Serious Cases: A significant portion of reported events from openFDA database on Ozempic are classified as "Serious," indicating that while Ozempic may be effective for its intended uses, it also comes with high risks from complications.
+- High Proportion of Serious Cases: A significant portion of reported events from openFDA database on Ozempic are classified as "Serious," indicating that while Ozempic may be effective for its intended uses, it also comes with high risks. 
 
 {% include framework/shortcodes/figure.html src="/assets/files/Severity-Dist-Ozempic.png" title="Severity Distribution -Ozempic" caption="Andy Garcia" alt="Photo of Zoho Cliq Command Style" link="https://figma.com" target="_blank" %}
 
@@ -98,11 +83,13 @@ Key Insights
 
 
 ### Age Distribution of Patients Reporting Adverse Events
-The histogram below shows the age distribution of patients who reported adverse events related to Ozempic, with the mean and median ages marked for reference.
+Onto our next stop in understanding Ozempics complications is analyzing the reported ages of individuals who experienced complications with the medication. I have created a histogram shows the age distribution of patients who reported adverse events related to Ozempic, with the mean and median ages marked for reference.
 
 Key Observations
 - Diverse Age Range: The distribution shows that adverse events were reported across a broad range of ages, with the mean age slightly above the median, suggesting a slight skew toward older age groups.
-- The majority of reports on the adverse effects of Ozempic come from individuals around 50 years old
+- The majority of reports on the adverse effects of Ozempic come from individuals between 40 - 80 years old
+
+Note that the reported complications are not exclusive to the elderly. Even adults in their mid 40s have more often reported adverse effects from using the drug.
 
 {% include framework/shortcodes/figure.html src="/assets/files/Age-dis-Ozempic.png" title="The message card is scrollable, showing you the hourly temps as well" caption="Andy Garcia" alt="Photo of Zoho Cliq Command Style" link="https://figma.com" target="_blank" %}
 
@@ -139,13 +126,13 @@ Key Observations
 
 
 ### Avg Sentinment by Reported Side Effect
-The chart below shows the average sentiment score associated with different side effects as reported in Ozempic user reviews on Drugs.com
+So we saw that Ozempic can cause pretty bad effects for those who use it. But how do users of the drug feel about it? Pretty bad I assume since if your feeling nauseaus, vomiting, fatigues, and have a strong liklihood of ending up in an emergency room or obtaining a chronic disability. Well in reality...these next bits of analysis may shock you.
 
-Sentiment scores range from -1 (negative) to +1 (positive), which reflect the overall tone of users’ experiences with each side effect.
+Below is a chart that shows the average sentiment score associated with different side effects as reported in Ozempic user reviews on Drugs.com. Sentiment scores range from -1 (negative) to +1 (positive), which reflect the overall tone of users’ experiences with each side effect.
 
 Key Observations
-- Negative Sentiment for Nausea and Diarrhea: Side effects like nausea and diarrhea are associated with the lowest sentiment scores, indicating a generally negative experience among users who reported these symptoms in their review.
-- Mixed Sentiments for Other Effects: Fatigue and headache also show lower sentiment scores, though they are less negative than nausea or diarrhea. Appetite suppression has a more neutral score, which may be due to how some users might view a disinterest to eat as a postiive side effect for weight management.
+- Negative Sentiment for Fatigue: Reviews that discussed having fatigue from Ozempic were MUCH more negative than reviews without the mentioning of Fatigue.
+- Positive Sentiments for Other Effects: If a review did not mention faitgue, it was generally quite positive. Even when mentioning vomiting or pancreatis, reviewers still felt like Ozempic was amazing for them.
 
 
 {% include framework/shortcodes/figure.html src="/assets/files/avg-sentiment-sideeffect-ozempic.png" title="Avg Sentinment by Reported Side Effect" caption="Andy Garcia" alt="Photo of Zoho Cliq Command Style" link="https://figma.com" target="_blank" %}
