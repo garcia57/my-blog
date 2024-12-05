@@ -188,11 +188,11 @@ Key Observations
 </details>
 
 ### Sentiment Distribution of Ozempic User Reviews
-The bar chart below illustrates the overall sentiment distribution among Ozempic user reviews, classified into positive, neutral, and negative categories.
+Upon seeing how happy people's reviews were of Ozempic (despite the very harmful effects it caused them), I wanted to check the overall sentiment towards Ozempic. The bar chart below illustrates the overall sentiment distribution among Ozempic user reviews, classified into positive, neutral, and negative categories.
 
 Key Takeaways
-- Notable Negative Sentiment: A significant portion of reviews fall into the negative category, reflecting dissatisfaction potentially linked to side effects or unmet expectations.
-- Overwhelming Positive Sentinment: Many reviewers had positive sentiments towards Ozempic, depite how serious the complications are from a negative medicinal reaction.
+- Notable Negative Sentiment: A sizeable portion of reviews fall into the negative category, reflecting dissatisfaction potentially linked to side effects or unmet expectations.
+- Overwhelming Positive Sentinment: An massize amount of reviews had positive sentiments towards Ozempic, depite how serious the complications are from a negative medicinal reaction.
 
 {% include framework/shortcodes/figure.html src="/assets/files/sent-dist-allreviews-ozempic.png" title="The message card is scrollable, showing you the hourly temps as well" caption="Andy Garcia" alt="Photo of Zoho Cliq Command Style" link="https://figma.com" target="_blank" %}
 
@@ -232,6 +232,15 @@ Key Takeaways
 </details>
 
 ### Topic vs Sentiment Distribution for Ozempic User Reviews
+So far I have provided, hopefully, interesting insight on my inference of people's positive persepctive towards Ozempic despite its harmful effects.
+
+
+
+
+
+
+ we know Ozempic if generally seen in a positive light for reviewers and that, as long as the drug isn't causing fatigue, there is a general positive sentiment towards the drug. 
+
 My stacked bar chart categorizes Ozempic user reviews into topics and displays the distribution of sentiments (positive, neutral, and negative) within each.
 
 Key Takeaways
