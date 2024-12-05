@@ -232,20 +232,11 @@ Key Takeaways
 </details>
 
 ### Topic vs Sentiment Distribution for Ozempic User Reviews
-So far I have provided, hopefully, interesting insight on my inference of people's positive persepctive towards Ozempic despite its harmful effects.
-
-
-
-
-
-
- we know Ozempic if generally seen in a positive light for reviewers and that, as long as the drug isn't causing fatigue, there is a general positive sentiment towards the drug. 
-
-My stacked bar chart categorizes Ozempic user reviews into topics and displays the distribution of sentiments (positive, neutral, and negative) within each.
+So far I have provided, hopefully, interesting insight on my inference of people's positive persepctive towards Ozempic despite its harmful effects. This next graph categorizes Ozempic user reviews into topics and displays the distribution of sentiments (positive, neutral, and negative) within each. From this I wanted to see what topics were the most least positive when discussing Ozempic. 
 
 Key Takeaways
-- Varied Sentiments by Topic: Topics like "Dosage & Weight Loss" and "Weight Loss & Diabetes Management" show mixed sentiments, possibly reflecting varied user experiences with Ozempic’s effectiveness and side effects in these areas.
 - Negative Sentiment in Side Effects: The topic "Side Effects & Diabetes" has a higher proportion of negative sentiment, which aligns with previous observations on common side effects and their impact on patient satisfaction. Of course, some of the positive sentiments could be due to the side effect of weight loss that some would consider a positive effect.
+- Stronger postive sentiment for Ozempic when the drug is used predominately for diabetes managment. This is contrasted with the slighly more mixed sentiment when the drug was discussed as only being used for weight loss.
 
 
 {% include framework/shortcodes/figure.html src="/assets/files/topic-v-sent-ozempic.png" title="Topic vs Sentiment Distribution for Ozempic User Reviews" caption="Andy Garcia" alt="Photo of Zoho Cliq Command Style" link="https://figma.com" target="_blank" %}
@@ -314,30 +305,12 @@ Key Takeaways
 
 
 ## Conclusive Dataset Overview
-This project uses two distinct but complementary datasets to examine Ozempic’s impact from both clinical and real-world perspectives. While these datasets are not merged, they offer unique insights when analyzed in parallel, allowing for a holistic view of adverse events and patient experiences.
+As a recap, my EDA used two distinct but complementary datasets to examine Ozempic’s impact from both clinical and real-world perspectives. While these datasets are not merged, they offer unique insights when analyzed in parallel, allowing for a holistic view of Ozempics adverse events and the positve patient perspective towards the drug.
 
-1. Clinical Adverse Event Dataset (openFDA)
+1. Complementary Insights
 
-    The clinical dataset from openFDA provides detailed reports of adverse events based on official clinical and post-market surveillance data. This dataset covers:
-
-    - Demographics: Information on patient age, sex, and country of origin, allowing for demographic analysis of clinical adverse events.
-    - Side Effects: Categorized by type and severity, capturing common reactions (e.g., nausea, fatigue) and serious events, including those resulting in death.
-    - Administration Methods: Specifies the route of administration, such as subcutaneous injection, offering insights into whether certain methods correlate with specific adverse effects.
-
-    This dataset provides a structured, medically reviewed view of Ozempic’s side effects and severity, suitable for identifying clinically significant trends in adverse reactions.
-
-2. User Sentiment Dataset (Drugs.com)
-    
-    The user sentiment dataset includes self-reported experiences from Ozempic users, gathered from Drugs.com reviews. Although less structured than the clinical dataset, this data adds depth by capturing patient-reported side effects, satisfaction, and sentiment in everyday use. This dataset covers:
-
-    - Side Effects: Mentions of side effects by users, including commonly reported symptoms like nausea, fatigue, and weight changes, allowing for sentiment-based analysis of adverse reactions.
-    - Sentiment Analysis: Patient reviews are categorized by sentiment polarity (positive, neutral, negative), providing a broader view of how users feel about the medication’s effects.
-    - Real-World Experiences: Unlike the clinical data, this dataset includes nuanced, subjective reports, which may reveal side effects or concerns that are less prevalent in formal clinical reporting.
-
-3. Complementary Insights
-
-    In the social craze of obtaining the media hyped wonder drug, my project sheds light on the unreported, hidden negative effects of the drug. Using this comparative analysis, you can clearly see just how harmful taking this drug is even for those who are specifically prescribed to diabetes management. I have showed you both the frequency and severity of side effects (from clinical data) and user-reported satisfaction and concerns (from sentiment analysis). While it is tempting to hop on the train of seemingly magical weightloss, please see beyond the sparkles and confetti. And finally, this drug is doctor prescribed for individuals who are grateful for another day of life to get their diabetes under control. Please do not make it any more harder for them to get the care they need if you only want to shave a few pounds here and there.
-    
+    In the social craze of obtaining the media hyped wonder drug, my exploration shows you, the reader, that Ozempic is well liked among those using it. Despite its negative effects, patients find the value of losing weight greater than fatigue, vomiting, and moments of pancreatis. That tells us that weight loss is truly a wonderdrug that so many craze today. And, even more importantly, that the most postiive reviews come from reviewers who are getting their diabetes under control. While it is unfortunate that so many are making Ozempic limited for those who need it, let us realize that those who appreciate the drug the most are the ones with the greatest medical need. It gives those struggling with diabetes another shot at life, which is worth the risks and pains the drug causes.
+   
     NOTE: One weakness of this exploration is the small sample size of the reviews on Drugs.com as obtaining much larger samples would better represent the general publics view on the drug for sentiment analysis.
 
 Stay safe and stay healthy!
